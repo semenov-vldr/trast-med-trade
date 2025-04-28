@@ -1,0 +1,63 @@
+.offers
+
+  &__item.swiper-slide-active
+    @media (min-width: $width-tablet)
+      width: 640px
+      .offers__item-desc
+        margin-top: 200px
+      .offers__item-img
+        max-width: 280px
+        max-height: 350px
+
+  &__item
+    background-color: $white
+    border-radius: 16px
+    padding: 20px
+    display: flex
+    align-items: center
+    gap: 32px
+    width: 450px
+    height: 100%
+    @include tablet
+      width: 320px
+      flex-direction: column
+      height: auto
+    @include mobile
+      width: 310px
+    @media (max-width: 360px)
+      width: 280px
+
+    &-content
+      display: flex
+      flex-direction: column
+      gap: 16px
+      @include tablet
+        height: 100%
+
+    &-title
+      font-size: 20px
+      font-weight: 500
+      @include tablet
+        font-size: 16px
+
+    &-desc
+      color: $dark-gray
+      font-size: 14px
+      margin-top: auto
+      @include tablet
+        font-size: 12px
+      @media (min-width: $width-tablet)
+        margin-top: 80px
+
+    &-img
+      max-width: 150px
+      width: 100%
+      object-fit: contain
+      margin: auto
+      @include tablet
+        max-width: 200px
+
+
+
+
+

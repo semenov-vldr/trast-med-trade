@@ -1,0 +1,73 @@
+.form
+  display: flex
+  flex-direction: column
+  gap: 20px
+  background-color: $white
+
+  &__field
+    display: flex
+    flex-direction: column
+    gap: 4px
+    font-size: 14px
+    @include mobile
+      font-size: 12px
+
+    &-error
+      color: #FF0000
+      font-size: 12px
+      display: none
+
+    input, textarea
+      background-color: $bg
+      padding: 14px 16px
+      border-radius: 8px
+      &::placeholder
+        color: $dark-gray
+      &:disabled
+        background-color: rgba($dark-gray, 0.5)
+        cursor: auto
+
+    //input:valid:focus-within
+    //  border: 1px solid green
+    //
+    //input:invalid:focus-within + .form__field-error
+    //  display: none
+    //
+    //input:invalid:focus-within + .form__field-error
+    //  display: block
+
+  &__upload
+
+    &-zone
+      display: flex
+      flex-direction: column
+      gap: 4px
+
+    &-file
+      border: 1px dashed $gray
+      border-radius: 8px
+      min-height: 120px
+      padding: 16px
+      display: flex
+      align-items: center
+      justify-content: center
+      &:hover,
+      &.active
+        background-color: $gray
+
+
+
+    &-label
+      color: $dark-gray
+      font-size: 14px
+
+
+  &__submit
+    width: 100%
+
+  &__policy
+    color: $dark-gray
+    font-size: 12px
+    a
+      color: $text
+      font-weight: 500

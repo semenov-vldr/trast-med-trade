@@ -1,0 +1,173 @@
+@import "containers"
+
+.hidden
+  display: none !important
+
+.visually-hidden
+  position: absolute
+  width: 1px
+  height: 1px
+  margin: -1px
+  border: 0
+  padding: 0
+  white-space: nowrap
+  clip-path: inset(100%)
+  clip: rect(0 0 0 0)
+  overflow: hidden
+
+section
+  scroll-margin: 130px
+  @media (max-width: $width-mobile)
+    scroll-margin: 80px
+
+
+.title-section
+  font-size: 32px
+  margin-bottom: 32px
+  font-weight: 500
+  @include mobile
+    font-size: 20px
+    margin-bottom: 12px
+
+
+.flex-center
+  display: flex
+  align-items: center
+  justify-content: center
+
+
+.button
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  padding: 14px 24px
+  min-height: 48px
+  transition: $transition
+  line-height: 1
+  width: fit-content
+  font-size: 14px
+  border-radius: 8px
+  user-select: none
+  overflow: hidden
+  white-space: nowrap
+  @include tablet
+    padding: 14px 16px
+  &.button-blue
+    color: $white
+    background-color: $blue
+    &:hover,
+    &:active,
+    &.active
+      background-color: $dark-blue
+    &:disabled
+      background-color: rgba($blue, 0.5)
+  &.button-blue.burger
+    position: relative
+    &::before
+      content: ""
+      display: inline-block
+      background-image: url('../img/icons/burger.svg')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: cover
+      width: 16px
+      height: 16px
+    &.active::before
+      background-image: url('../img/icons/close.svg')
+
+  &.button-outline
+    color: $white
+    border: 1px solid currentColor
+    &:hover,
+    &:active
+      background-color: $white
+      border-color: transparent
+      color: $blue
+    &:disabled
+      color: $white
+      border: 1px solid currentColor
+      opacity: 0.5
+
+
+.scroll-margin
+  scroll-margin: 120px
+  @media (max-width: $width-mobile)
+    scroll-margin: 70px
+
+
+.heading-with-nav
+  display: flex
+  justify-content: space-between
+  align-items: center
+  gap: 32px
+
+.badge-slide
+  color: $white
+  background-color: $blue
+  border-radius: 90px
+  font-size: 12px
+  line-height: 1
+  padding: 6px 12px
+  text-transform: uppercase
+  width: fit-content
+  @include tablet
+    font-size: 10px
+    padding: 6px 8px
+
+.width-slide
+  width: 350px
+  @include tablet
+    width: 320px
+  @include mobile
+    width: 310px
+  @media (max-width: 360px)
+    width: 280px
+
+
+// --- Swiper.js ---
+
+.swiper
+  overflow: visible
+
+.swiper-wrapper
+  height: auto
+
+.swiper-slide
+  height: auto
+
+.swiper-navigation
+  display: flex
+  align-items: center
+  gap: 8px
+  .swiper-button-next,
+  .swiper-button-prev
+    position: static
+    width: 48px
+    height: 48px
+    border: 1px solid $blue
+    border-radius: 50%
+    &::after
+      content: ""
+      display: inline-block
+      background-image: url("../img/icons/arrow-nav-right.svg")
+      width: 12px
+      height: 12px
+  .swiper-button-prev::after
+    transform: rotate(-180deg)
+  @include tablet
+    display: none
+
+.swiper-pagination
+  display: none
+  position: static
+  margin-top: 12px
+  @include tablet
+    display: block
+  .swiper-pagination-bullet
+    background-color: $gray
+  .swiper-pagination-bullet-active
+    background-color: $blue
+
+

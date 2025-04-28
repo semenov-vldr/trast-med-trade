@@ -1,0 +1,146 @@
+.header
+  padding: 12px 0
+
+  &__container
+    position: relative
+    display: flex
+    align-items: center
+    gap: 24px
+    justify-content: space-between
+    transition: $transition
+    &:has(.header__nav-prod.active)
+      background-color: $white
+    &:has(.header__burger.active) .header__main
+      transform: translateX(0)
+      opacity: 1
+
+  &__logo
+    position: relative
+    z-index: 1
+
+  &__burger
+    position: relative
+    z-index: 1
+    padding: 14px 16px
+    flex: 0 0 48px
+    display: none
+    @include tablet
+      display: block
+
+  &__main
+    display: flex
+    align-items: center
+    width: 100%
+    background-color: $white
+    padding: 4px
+    border-radius: 12px
+    border: 1px solid $gray
+    gap: 16px
+    @include tablet
+      position: fixed
+      top: 72px
+      left: 0
+      padding: 16px
+      flex-direction: column
+      align-items: flex-start
+      gap: 16px
+      background-color: $bg
+      border: none
+      height: calc(100vh - 72px)
+      overflow: auto
+      transform: translateX(-150%)
+      opacity: 0
+      transition: $transition
+      z-index: 3
+
+
+
+  &__nav-prod.button.button-blue
+    @include tablet
+      background: none
+      color: $text
+      font-weight: 500
+      font-size: 20px
+      padding: 0
+      &::before
+        display: none
+
+
+  &__nav-prod-list
+    margin: 0 auto
+    position: absolute
+    display: flex
+    justify-content: space-between
+    gap: 32px
+    top: 58px
+    left: 0
+    right: 0
+    background-color: $white
+    padding: 32px
+    border-radius: 0 0 32px 32px
+    z-index: 2
+    @media (min-width: $width-tablet)
+      transition: $transition
+      opacity: 0
+      visibility: hidden
+      &.active
+        opacity: 1
+        visibility: visible
+
+    @include tablet
+      position: initial
+      display: flex
+      flex-direction: column
+      gap: 16px
+      margin: 0
+      padding: 0
+      background-color: $bg
+  &__nav-prod-link
+    display: flex
+    flex-direction: column
+    gap: 8px
+    &-title
+      font-size: 18px
+      font-weight: 500
+      @include tablet
+        font-size: 14px
+        font-weight: 400
+    &-img
+      @include tablet
+        display: none
+    &:hover .header__nav-prod-link-title
+      text-decoration: underline
+
+
+  &__nav
+    display: flex
+    align-items: center
+    gap: 32px
+    &-link
+      font-size: 14px
+      &:hover
+        text-decoration: underline
+      @include tablet
+        font-size: 20px
+        font-weight: 500
+    @include tablet
+      flex-direction: column
+      align-items: flex-start
+      gap: 24px
+      margin-top: 8px
+
+  &__feedback
+    margin-left: auto
+    @include tablet
+      margin: 0
+      width: 100%
+
+  &__contacts
+    display: flex
+    flex-direction: column
+    gap: 8px
+    margin-top: auto
+    & > *
+      font-weight: 500
+    @media (min-width: $width-tablet)
+      display: none

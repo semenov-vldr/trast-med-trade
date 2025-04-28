@@ -1,0 +1,52 @@
+header.header
+    .header__container.container
+        a.header__logo(href="##")
+            img(src="./assets/img/logo.svg")
+
+        button.header__burger.button.button-blue.burger
+
+
+        .header__main
+
+            button.header__nav-prod.button.button-blue.burger Продукция
+
+            nav.header__nav-prod-list
+                a.header__nav-prod-link(href="##")
+                    img.header__nav-prod-link-img(src="./assets/img/nav-products/01.png")
+                    h3.header__nav-prod-link-title Биохимия
+
+                a.header__nav-prod-link(href="##")
+                    img.header__nav-prod-link-img(src="./assets/img/nav-products/02.png")
+                    h3.header__nav-prod-link-title Анализ мочи
+
+                a.header__nav-prod-link(href="##")
+                    img.header__nav-prod-link-img(src="./assets/img/nav-products/03.png")
+                    h3.header__nav-prod-link-title Гематология
+
+                a.header__nav-prod-link(href="##")
+                    img.header__nav-prod-link-img(src="./assets/img/nav-products/04.png")
+                    h3.header__nav-prod-link-title Расходные материалы
+
+                a.header__nav-prod-link(href="##")
+                    img.header__nav-prod-link-img(src="./assets/img/nav-products/05.png")
+                    h3.header__nav-prod-link-title Системы забора крови
+
+            nav.header__nav
+                a.header__nav-link(href="##") О компании
+                a.header__nav-link(href="##") Документы
+                a.header__nav-link(href="##") Акции
+                //a.header__nav-link(href="##") Контакты
+
+
+
+            .header__contacts
+                a(href="tel:+78007000266") 8 (800) 700 02 66
+                p ПН-ЧТ 9:00 -18:00 ; ПТ 9:00 - 17:00 (мск)
+
+            button.header__feedback.button.button-blue(type="button" onclick="window.modal.showModal()") Оставить заявку
+
+    include ../../components/modal/modal
+
+
+
+

@@ -1,0 +1,47 @@
+.modal
+  width: calc(100% - 32px)
+  max-width: 550px
+  margin: 0 auto
+  top: 50%
+  transform: translateY(-50%)
+  z-index: 3
+  background-color: $white
+  padding: 24px
+  border-radius: 24px
+  overflow-y: auto
+  color: $text
+  &::backdrop
+    background-color: rgba($blue, 0.5)
+  @include mobile
+    padding: 16px
+
+  &__body
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+  &__heading
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+  &__close
+    position: absolute
+    right: 12px
+    top: 12px
+    background-image: url("../img/icons/close-modal.svg")
+    width: 40px
+    height: 40px
+
+  &__title
+    width: 80%
+    font-size: 24px
+    text-wrap: balance
+    font-weight: 500
+    @include tablet
+      width: 90%
+      font-size: 20px
+  &__subtitle
+    color: $dark-gray
+    @include mobile
+      font-size: 14px

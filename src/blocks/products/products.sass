@@ -1,0 +1,46 @@
+.products
+
+  &__tabs
+    display: flex
+    align-items: baseline
+    gap: 32px
+    justify-content: space-between
+    margin-bottom: 20px
+
+    &-list
+      display: flex
+      gap: 8px
+      align-items: center
+      overflow: auto
+
+    &-item
+      background-color: $white
+      border-radius: 100px
+      padding: 8px 32px
+      font-size: 14px
+      border: 1px solid transparent
+      white-space: nowrap
+      &:hover
+        border-color: $blue
+      &.active
+        background-color: $blue
+        color: $white
+
+  &__item
+    background-color: $white
+    border-radius: 16px
+    padding: 16px
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    &-title
+      font-size: 14px
+      margin: 20px 0 4px
+      @include tablet
+        font-size: 12px
+    &-desc
+      font-size: 14px
+      color: $dark-gray
+      @include tablet
+        font-size: 12px
+

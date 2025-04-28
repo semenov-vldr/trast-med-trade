@@ -1,0 +1,54 @@
+section.directions
+    .directions__container.container
+        .heading-with-nav
+            h2.title-section Направления
+            .swiper-navigation.directions__nav
+                .swiper-button-prev
+                .swiper-button-next
+
+        .directions__slider.swiper
+
+            .swiper-wrapper
+
+                a.swiper-slide.directions__item.width-slide(href="")
+                    svg(width="283" height="302" class="biochemistry")
+                        use(href="./assets/img/sprite.svg#biochemistry")
+                    .directions__item-bottom
+                        h3.directions__item-title Биохимия
+                        span.directions__item-icon
+
+                a.swiper-slide.directions__item.width-slide(href="")
+                    //include ../../../public/img/directions/03.svg
+                    svg(width="226" height="302" class="hematology")
+                        use(href="./assets/img/sprite.svg#hematology")
+                    .directions__item-bottom
+                        h3.directions__item-title Гематология
+                        span.directions__item-icon
+
+                a.swiper-slide.directions__item.width-slide(href="")
+                    //include ../../../public/img/directions/02.svg
+                    svg(width="312" height="302" class="urine-analysis")
+                        use(href="./assets/img/sprite.svg#urine-analysis")
+                    .directions__item-bottom
+                        h3.directions__item-title Анализ мочи
+                        span.directions__item-icon
+
+
+                a.swiper-slide.directions__item.width-slide(href="")
+                    //include ../../../public/img/directions/04.svg
+                    svg(width="414" height="302" class="consumables")
+                        use(href="./assets/img/sprite.svg#consumables")
+                    .directions__item-bottom
+                        h3.directions__item-title Расходные материалы
+                        span.directions__item-icon
+
+
+                a.swiper-slide.directions__item.width-slide(href="")
+                    //include ../../../public/img/directions/05.svg
+                    svg(width="211" height="302" class="blood-collection-systems")
+                        use(href="./assets/img/sprite.svg#blood-collection-systems")
+                    .directions__item-bottom
+                        h3.directions__item-title Системы забора крови
+                        span.directions__item-icon
+
+            .swiper-pagination

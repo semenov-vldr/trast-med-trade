@@ -1,0 +1,35 @@
+.feedback
+
+  &__container
+    display: grid
+    grid-template-columns: 1.2fr 1fr
+    gap: 16px
+    @include tablet
+      display: flex
+      flex-direction: column
+
+  &__content
+    display: flex
+    flex-direction: column
+
+  &__text
+    color: $dark-gray
+    margin-bottom: 16px
+    @include tablet
+      font-size: 14px
+      margin-bottom: 12px
+
+
+  .form
+    padding: 24px
+    border-radius: 24px
+    @include tablet
+      padding: 16px
+      border-radius: 16px
+    .form__submit
+      margin-top: auto
+
+  &__img
+    @include tablet
+      display: none
+

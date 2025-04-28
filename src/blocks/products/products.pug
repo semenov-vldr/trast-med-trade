@@ -1,0 +1,41 @@
+section.products
+    .products__container.container
+        h2.title-section Наша продукция
+
+        .products__tabs
+            .products__tabs-list
+                button.products__tabs-item.active Все
+                button.products__tabs-item Гематология
+                button.products__tabs-item Биохимия
+                button.products__tabs-item Анализ мочи
+                button.products__tabs-item Системы забора крови
+
+            .swiper-navigation.products__nav
+                .swiper-button-prev
+                .swiper-button-next
+
+        .products__slider.swiper
+            .swiper-wrapper
+
+                a.swiper-slide.products__item.width-slide(href="")
+                    span.badge-slide NEW
+                    img.products__item-img(src="./assets/img/products/01.png")
+                    h3.products__item-title Zybio U1600
+                    p.products__item-desc Биохимический анализатор мочи
+
+                a.swiper-slide.products__item.width-slide(href="")
+                    img.products__item-img(src="./assets/img/products/02.png")
+                    h3.products__item-title Zybio EXC200
+                    p.products__item-desc Биохимический анализатор
+
+                a.swiper-slide.products__item.width-slide(href="")
+                    img.products__item-img(src="./assets/img/products/03.png")
+                    h3.products__item-title Dymind DH76
+                    p.products__item-desc Анализатор 5-Diff автоматический гематологический
+
+                a.swiper-slide.products__item.width-slide(href="")
+                    img.products__item-img(src="./assets/img/products/04.png")
+                    h3.products__item-title Zybio Z50
+                    p.products__item-desc Гематологический анализатор
+
+            .swiper-pagination

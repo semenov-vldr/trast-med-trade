@@ -1,0 +1,40 @@
+.about
+
+  &__container
+    display: flex
+    gap: 16px
+    @include tablet
+      flex-direction: column
+
+  &__content
+    display: flex
+    flex-direction: column
+    gap: 24px
+    @include tablet
+      gap: 12px
+
+  &__text-large
+    font-size: 24px
+    font-weight: 500
+    @include tablet
+      font-size: 20px
+      text-wrap: balance
+
+  &__text-small
+    color: $dark-gray
+    @include tablet
+      font-size: 14px
+
+  &__button
+    @media (min-width: $width-tablet)
+      margin-top: 24px
+
+  &__img
+    max-width: 550px
+    @include tablet
+      max-width: 450px
+      margin: 56px auto 32px
+      transform: rotate(220deg)
+    @include mobile
+      max-width: 350px
+

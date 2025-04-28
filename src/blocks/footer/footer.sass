@@ -1,0 +1,87 @@
+.footer
+  background-image: url('../img/footer-bg-full-2.png')
+  background-position: center 0
+  background-repeat: no-repeat
+  padding: 94px 0 32px
+  color: $white
+  font-size: 14px
+  @include tablet
+    padding-top: 56px
+    background-image: url('../img/footer-bg.png')
+    font-size: 12px
+
+  &__container
+    display: flex
+    flex-direction: column
+    align-items: center
+
+  &__logo img
+    width: 210px
+    @include tablet
+      width: 130px
+
+  &__nav
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 120px
+    justify-content: space-between
+    margin-top: 70px
+    &-link
+      text-transform: uppercase
+      &:hover
+        color: $dark-gray
+    @include tablet
+      gap: 40px
+    @include mobile
+      flex-direction: column
+      justify-content: center
+      margin-top: 40px
+      gap: 16px
+
+
+  &__bottom
+    margin-top: 146px
+    display: flex
+    justify-content: space-between
+    gap: 32px
+    width: 100%
+    align-items: center
+    @include mobile
+      flex-direction: column
+      margin-top: 40px
+      gap: 12px
+
+  &__contacts
+    display: flex
+    flex-direction: column
+    gap: 8px
+    @include mobile
+      align-items: center
+      gap: 12px
+
+  &__button
+    @include tablet
+      padding: 14px 57px
+    @include mobile
+      width: 100%
+
+
+  &__policy
+    display: flex
+    flex-direction: column
+    gap: 8px
+    color: $dark-gray
+    font-weight: 500
+    font-size: 12px
+    text-align: right
+    @include tablet
+      font-size: 10px
+    a:hover
+      text-decoration: underline
+    @include mobile
+      margin-top: 24px
+      align-items: center
+
+
+
