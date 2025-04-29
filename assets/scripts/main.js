@@ -1,48 +1,5 @@
 "use strict";
 
-// Отправка данных формы в Телеграм
-var TOKEN = "6388509099:AAFIQyVlZ4MapEiXhH2vQJh8CyZFgFoJ_mA";
-var CHAT_ID = "-1002008090284";
-var URL_API = "https://api.telegram.org/bot".concat(TOKEN, "/sendMessage");
-var forms = document.querySelectorAll("form.form");
-if (forms) {
-  forms.forEach(function (form) {
-    return form.addEventListener("submit", sendMessageTelegram);
-  });
-}
-function sendMessageTelegram(evt) {
-  evt.preventDefault();
-  var typeConnection = this.querySelector(".form__connection-fieldset input[type='radio']:checked");
-  var successFormMessage = this.querySelector('.form__message--success');
-  var errorFormMessage = this.querySelector('.form__message--error');
-  function formSuccess() {
-    successFormMessage.classList.add('js-message-active');
-  }
-  function formError() {
-    errorFormMessage.classList.add('js-message-active');
-  }
-  var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 ***:</b>\n";
-  message += "<b>\u0418\u043C\u044F:</b> ".concat(this.name.value, "\n");
-  message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(this.phone.value, "\n");
-  message += "<b>\u0421\u043F\u043E\u0441\u043E\u0431 \u0441\u0432\u044F\u0437\u0438:</b> ".concat(typeConnection.value, "\n");
-  axios.post(URL_API, {
-    chat_id: CHAT_ID,
-    parse_mode: "html",
-    text: message
-  }).then(function () {
-    console.log("Заявка отправлена");
-    //formSuccess();
-  })["catch"](function (err) {
-    console.warn(err);
-    //formError();
-  })["finally"](function () {
-    console.log("Конец");
-  });
-  this.reset();
-}
-;
-"use strict";
-
 var html = document.querySelector('html');
 var classBlockScroll = "js-no-scroll";
 function blockScrollBody() {
@@ -68,82 +25,45 @@ function toggleBlockScrollBody() {
 "use strict";
 "use strict";
 
+function initializeSwiper(containerClass) {
+  var container = document.querySelector(".".concat(containerClass));
+  if (!container) {
+    console.warn("Container with class \"".concat(containerClass, "\" not found."));
+    return;
+  }
+  var swiperElement = container.querySelector(".".concat(containerClass, "__slider"));
+  if (!swiperElement) {
+    console.warn("Swiper element not found within container \"".concat(containerClass, "\"."));
+    return;
+  }
+  var swiperInstance = new Swiper(swiperElement, {
+    pagination: {
+      el: ".".concat(containerClass, " .swiper-pagination"),
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".".concat(containerClass, "__nav .swiper-button-next"),
+      prevEl: ".".concat(containerClass, "__nav .swiper-button-prev")
+    },
+    watchOverflow: true,
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    initialSlide: 0
+  });
+}
+
+// Инициализация слайдеров для всех блоков
+initializeSwiper("offers");
+initializeSwiper("directions");
+initializeSwiper("products");
+"use strict";
+
 var images = document.querySelectorAll("img");
 if (images) {
   images.forEach(function (img) {
     return img.setAttribute("loading", "lazy");
   });
 }
-"use strict";
-
-var phoneInputs = document.querySelectorAll('input[data-tel-input]');
-var getInputNumbersValue = function getInputNumbersValue(input) {
-  return input.value.replace(/\D/g, "");
-};
-var onPhoneInput = function onPhoneInput(evt) {
-  var input = evt.target;
-  var inputNumbersValue = getInputNumbersValue(input);
-  var formattedInputValue = "";
-  var selectionStart = input.selectionStart;
-  if (!inputNumbersValue) input.value = "";
-  if (input.value.length !== selectionStart) {
-    if (evt.data && /\D/g.test(evt.data)) {
-      input.value = formattedInputValue;
-    }
-    return;
-  }
-  if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
-    // Российские номера
-    if (inputNumbersValue[0] === "9") inputNumbersValue = "7" + inputNumbersValue;
-    var firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
-    formattedInputValue = firstSymbols + " ";
-    if (inputNumbersValue[0] === "8") {
-      //phoneInputs[0].setAttribute("pattern", ".{17,}");
-      console.log(phoneInputs[0].getAttribute("pattern"));
-    }
-    if (inputNumbersValue.length > 1) {
-      formattedInputValue += "(" + inputNumbersValue.slice(1, 4);
-    }
-    if (inputNumbersValue.length >= 5) {
-      formattedInputValue += ") " + inputNumbersValue.slice(4, 7);
-    }
-    if (inputNumbersValue.length >= 8) {
-      formattedInputValue += "-" + inputNumbersValue.slice(7, 9);
-    }
-    if (inputNumbersValue.length >= 10) {
-      formattedInputValue += "-" + inputNumbersValue.slice(9, 11);
-    }
-
-    // Не российские номера
-  } else formattedInputValue = "+" + inputNumbersValue;
-  input.value = formattedInputValue;
-};
-
-// Стирание первого символа
-var onPhoneKeyDown = function onPhoneKeyDown(evt) {
-  var input = evt.target;
-  if (evt.keyCode === 8 && getInputNumbersValue(input).length === 1) {
-    input.value = "";
-  }
-};
-
-// Вставка цифр в любое место
-var onPhonePaste = function onPhonePaste(evt) {
-  var pasted = evt.clipboardData || window.clipboardData;
-  var input = evt.target;
-  var inputNumbersValue = getInputNumbersValue(input);
-  if (pasted) {
-    var pastedText = pasted.getData("Text");
-    if (/\D/g.test(pastedText)) {
-      input.value = inputNumbersValue;
-    }
-  }
-};
-phoneInputs.forEach(function (input) {
-  input.addEventListener('input', onPhoneInput);
-  input.addEventListener("keydown", onPhoneKeyDown);
-  input.addEventListener("paste", onPhonePaste);
-});
 "use strict";
 
 var advantages = document.querySelector(".advantages");
@@ -179,47 +99,6 @@ if (advantages) {
 }
 "use strict";
 
-var directions = document.querySelector(".directions");
-if (directions) {
-  new Swiper('.directions__slider', {
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    navigation: {
-      nextEl: '.directions__nav .swiper-button-next',
-      prevEl: '.directions__nav .swiper-button-prev'
-    },
-    // Откл функционала, если слайдов меньше, чем нужно
-    watchOverflow: true,
-    slidesPerView: "auto",
-    //centeredSlides: true,
-
-    // Отступ между слайдами
-    spaceBetween: 16,
-    //loop: true,
-
-    // Стартовый слайд
-    initialSlide: 0,
-    // Ширина экрана
-    breakpoints: {
-      320: {
-        //slidesPerView: 1.2,
-      },
-      480: {
-        //slidesPerView: 1.5,
-      },
-      768: {
-        //slidesPerView: 2.2,
-      },
-      1280: {
-        //slidesPerView: 3.2,
-      }
-    }
-  });
-}
-"use strict";
-
 var header = document.querySelector("header.header");
 if (header) {
   var headerNavProd = header.querySelector(".header__nav-prod");
@@ -237,49 +116,17 @@ if (header) {
   var burgerMenu = header.querySelector(".header__burger");
   burgerMenu.addEventListener("click", function () {
     burgerMenu.classList.toggle("active");
+    toggleBlockScrollBody();
+  });
+  window.addEventListener('scroll', function () {
+    var scrollPosition = window.scrollY;
+    header.classList.toggle("js-scroll", scrollPosition > 0);
   });
 }
 "use strict";
 
 var offers = document.querySelector(".offers");
 if (offers) {
-  var swiper = offers.querySelector(".offers__slider");
-  new Swiper(swiper, {
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    navigation: {
-      nextEl: '.offers__nav .swiper-button-next',
-      prevEl: '.offers__nav .swiper-button-prev'
-    },
-    // Откл функционала, если слайдов меньше, чем нужно
-    watchOverflow: true,
-    slidesPerView: "auto",
-    //centeredSlides: true,
-
-    // Отступ между слайдами
-    spaceBetween: 16,
-    //loop: true,
-
-    // Стартовый слайд
-    initialSlide: 0,
-    // Ширина экрана
-    breakpoints: {
-      320: {
-        //slidesPerView: 1.2,
-      },
-      480: {
-        //slidesPerView: 1.5,
-      },
-      768: {
-        //slidesPerView: 2.2,
-      },
-      1280: {
-        //slidesPerView: 3.2,
-      }
-    }
-  });
   var widthTablet = window.matchMedia("(max-width: 1280px)");
   var offersSlides = offers.querySelectorAll(".offers__item");
   if (widthTablet.matches && offersSlides) {
@@ -297,11 +144,7 @@ var partners = document.querySelector(".partners");
 if (partners) {
   var checkScreen = function checkScreen() {
     var mediaQuery = window.matchMedia("(min-width: 1280px)").matches;
-    if (mediaQuery) {
-      partnersSwiper.destroy(true, true);
-    } else {
-      partnersSwiper.init();
-    }
+    mediaQuery ? partnersSwiper.destroy(true, true) : partnersSwiper.init();
   };
   var swiper = partners.querySelector(".partners__slider");
   var partnersSwiper = new Swiper(swiper, {
@@ -309,16 +152,12 @@ if (partners) {
       el: '.swiper-pagination',
       clickable: true
     },
-    // Откл функционала, если слайдов меньше, чем нужно
     watchOverflow: true,
     slidesPerView: "auto",
-    // Отступ между слайдами
     spaceBetween: 16,
-    // Стартовый слайд
     initialSlide: 0
   });
   checkScreen();
-  //window.addEventListener("resize", checkScreen);
 }
 "use strict";
 
@@ -331,43 +170,6 @@ if (products) {
         return tab.classList.toggle("active", tab === productsTab);
       });
     });
-  });
-  var swiper = products.querySelector(".products__slider");
-  new Swiper(swiper, {
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    navigation: {
-      nextEl: '.products__nav .swiper-button-next',
-      prevEl: '.products__nav .swiper-button-prev'
-    },
-    // Откл функционала, если слайдов меньше, чем нужно
-    watchOverflow: true,
-    slidesPerView: "auto",
-    //centeredSlides: true,
-
-    // Отступ между слайдами
-    spaceBetween: 16,
-    //loop: true,
-
-    // Стартовый слайд
-    initialSlide: 0,
-    // Ширина экрана
-    breakpoints: {
-      320: {
-        //slidesPerView: 1.2,
-      },
-      480: {
-        //slidesPerView: 1.5,
-      },
-      768: {
-        //slidesPerView: 2.2,
-      },
-      1280: {
-        //slidesPerView: 3.2,
-      }
-    }
   });
 }
 "use strict";
