@@ -377,8 +377,8 @@ var forms = document.querySelectorAll("form.form");
 if (forms) {
   forms.forEach(function (form) {
     var fileInput = form.querySelector(".form__upload-input");
-    fileInput.addEventListener("change", function (e) {
-      var file = e.target.files[0];
+    fileInput.addEventListener("change", function () {
+      var file = fileInput.files[0];
       console.log(file.name);
       var maxSizeFile = 1024 * 1024 * 35; // 35МБ
       var formUploadError = fileInput.querySelector(".form__upload-error");
