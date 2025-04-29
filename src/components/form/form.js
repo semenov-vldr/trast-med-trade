@@ -4,9 +4,9 @@ if (forms) {
     forms.forEach(form => {
 
         const fileInput = form.querySelector(".form__upload-input");
-        fileInput.addEventListener("change", (e) => {
+        fileInput.addEventListener("change", () => {
 
-            const file = e.target.files[0];
+            const file = fileInput.files[0];
             console.log(file.name)
             const maxSizeFile = 1024 * 1024 * 35; // 35МБ
             const formUploadError = fileInput.querySelector(".form__upload-error");
