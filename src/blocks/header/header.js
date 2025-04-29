@@ -18,6 +18,12 @@ if (header) {
   const burgerMenu = header.querySelector(".header__burger");
   burgerMenu.addEventListener("click", () => {
     burgerMenu.classList.toggle("active");
+    toggleBlockScrollBody();
+  });
+
+  window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    header.classList.toggle("js-scroll", scrollPosition > 0);
   });
 
 }

@@ -1,5 +1,12 @@
 .header
+  position: sticky
+  top: 0
+  left: 0
   padding: 12px 0
+  z-index: 3
+  &.js-scroll
+    background-color: $white
+  
 
   &__container
     position: relative
@@ -78,7 +85,7 @@
     background-color: $white
     padding: 32px
     border-radius: 0 0 32px 32px
-    z-index: 2
+    z-index: 3
     @media (min-width: $width-tablet)
       transition: $transition
       opacity: 0
