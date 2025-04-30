@@ -3,6 +3,9 @@ if (header) {
 
   const headerNavProd = header.querySelector(".header__nav-prod");
   const headerNavProdList = header.querySelector(".header__nav-prod-list");
+  const dialogs = document.querySelectorAll("dialog");
+
+
   headerNavProd.addEventListener("click", () => {
     headerNavProd.classList.toggle("active");
     headerNavProdList.classList.toggle("active");

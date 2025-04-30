@@ -3,38 +3,84 @@ if (forms) {
 
     forms.forEach(form => {
 
-        const fileInput = form.querySelector(".form__upload-input");
-        fileInput.addEventListener("change", () => {
+        const formUploadError = form.querySelector(".form__upload-zone .form__field-error");
+        const formUploadLabel = form.querySelector(".form__upload-label");
+        const formUploadLabelDefaultText = formUploadLabel.textContent;
+        const resetBtn = form.querySelector(".form__upload-reset");
 
-            const file = fileInput.files[0];
-            console.log(file.name)
+        const fileInput = form.querySelector(".form__upload-input");
+        const acceptFileInput = fileInput.accept;
+
+        function resetFormUploadError() {
+            formUploadError.classList.add("active");
+            fileInput.value="";
+            setTimeout(() => formUploadError.classList.remove("active"), 5000);
+        }
+
+        function fileLoaded(file) {
+            if (!file) return;
+            // Валидация размера файла
             const maxSizeFile = 1024 * 1024 * 35; // 35МБ
-            const formUploadError = fileInput.querySelector(".form__upload-error");
-            const formUploadLabel = form.querySelector(".form__upload-label");
-            const message = "Неверный формат файла";
             if (file.size > maxSizeFile) {
-                formUploadError.textContent = message;
-                this.value="";
+                formUploadError.textContent = "Размер файла превышает 35МБ";
+                resetFormUploadError();
+                return;
             }
-            formUploadLabel.textContent = `Файл ${file.name} загружен`;
+
+            // Валидация типа файла
+            const fileName = file.name;
+            const fileExtension = "." + fileName.slice(((fileName.lastIndexOf(".") - 1) >>> 0) + 2); // Расширение файла
+            if (!acceptFileInput.includes(fileExtension)) {
+                formUploadError.textContent = "Неверный формат файла";
+                resetFormUploadError();
+                return;
+            }
+            formUploadLabel.innerHTML = `Файл <span>${file.name}</span> добавлен`;
+            resetBtn.classList.add("active");
+            console.log(`Добавлен файл: ${fileInput.value}`);
+        };
+
+        fileInput.addEventListener("change", (e) => fileLoaded(fileInput.files[0]));
+
+        // Drag and Drop
+        ["dragover", "drop"].forEach(function(event) {
+            document.addEventListener(event, function(evt) {
+                evt.preventDefault();
+                return false;
+            });
         });
 
         const dropZone = form.querySelector(".form__upload-file");
-        dropZone.addEventListener("dragover", (e) => {
+        dropZone.addEventListener("dragenter", (e) => {
             e.preventDefault();
-            dropZone.classList.toggle("active", true);
+            dropZone.classList.add("active");
+        });
+
+        dropZone.addEventListener("dragleave",  () => {
+            dropZone.classList.remove("active");
         });
 
         dropZone.addEventListener("drop", (e) => {
-            e.preventDefault();
-            dropZone.classList.toggle("active", false); // добавить стили css
             fileInput.files = e.dataTransfer.files;
+            fileLoaded(fileInput.files[0]);
+            dropZone.classList.remove("active");
+        });
+
+        resetBtn.addEventListener("click", () => {
+            fileInput.value = "";
+            formUploadLabel.textContent = formUploadLabelDefaultText;
+            resetBtn.classList.remove("active");
+        });
+
+        form.addEventListener("submit", () => {
+            form.reset();
+            formUploadLabel.textContent = formUploadLabelDefaultText;
         });
 
     });
+}
 
 
-    let maskTel = new Inputmask("+7 (999) 999-99-99");
-    maskTel.mask("[type='tel']");
-
-} 
+// Добавление маски для номера телефона
+let maskTel = new Inputmask("+7 (999) 999-99-99");
+maskTel.mask("[type='tel']");
