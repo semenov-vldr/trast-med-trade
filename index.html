@@ -137,11 +137,11 @@
           <h2 class="title-section">Наша продукция</h2>
           <div class="products__tabs">
             <div class="products__tabs-list">
-              <button class="products__tabs-item active">Все</button>
-              <button class="products__tabs-item">Гематология</button>
-              <button class="products__tabs-item">Биохимия</button>
-              <button class="products__tabs-item">Анализ мочи</button>
-              <button class="products__tabs-item">Системы забора крови</button>
+              <button class="products__tabs-item active" data-category="all">Все</button>
+              <button class="products__tabs-item" data-category="1">Гематология</button>
+              <button class="products__tabs-item" data-category="2">Биохимия</button>
+              <button class="products__tabs-item" data-category="3">Анализ мочи</button>
+              <button class="products__tabs-item" data-category="4">Системы забора крови</button>
             </div>
             <div class="swiper-navigation products__nav">
               <div class="swiper-button-prev"></div>
@@ -149,13 +149,13 @@
             </div>
           </div>
           <div class="products__slider swiper">
-            <div class="swiper-wrapper"><a class="swiper-slide products__item width-slide" href=""><span class="badge-slide">NEW</span><img class="products__item-img" src="./assets/img/products/01.png">
+            <div class="swiper-wrapper"><a class="swiper-slide products__item width-slide" href="##" data-category="2"><span class="badge-slide">NEW</span><img class="products__item-img" src="./assets/img/products/01.png">
                 <h3 class="products__item-title">Zybio U1600</h3>
-                <p class="products__item-desc">Биохимический анализатор мочи</p></a><a class="swiper-slide products__item width-slide" href=""><img class="products__item-img" src="./assets/img/products/02.png">
+                <p class="products__item-desc">Биохимический анализатор мочи</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="2"><img class="products__item-img" src="./assets/img/products/02.png">
                 <h3 class="products__item-title">Zybio EXC200</h3>
-                <p class="products__item-desc">Биохимический анализатор</p></a><a class="swiper-slide products__item width-slide" href=""><img class="products__item-img" src="./assets/img/products/03.png">
+                <p class="products__item-desc">Биохимический анализатор</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="1"><img class="products__item-img" src="./assets/img/products/03.png">
                 <h3 class="products__item-title">Dymind DH76</h3>
-                <p class="products__item-desc">Анализатор 5-Diff автоматический гематологический</p></a><a class="swiper-slide products__item width-slide" href=""><img class="products__item-img" src="./assets/img/products/04.png">
+                <p class="products__item-desc">Анализатор 5-Diff автоматический гематологический</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="1"><img class="products__item-img" src="./assets/img/products/04.png">
                 <h3 class="products__item-title">Zybio Z50</h3>
                 <p class="products__item-desc">Гематологический анализатор</p></a></div>
             <div class="swiper-pagination"></div>
@@ -205,6 +205,7 @@
               <label class="form__upload-file"><span class="form__upload-label">Прикрепите файл до 35 мб (doc, pdf, txt)</span>
                 <input class="form__upload-input" type="file" name="file" accept=".doc, .pdf, .text" hidden>
               </label><span class="form__field-error">Неверный формат или размер файла</span>
+              <button class="button button-blue form__upload-reset" type="button">Удалить файл</button>
             </div>
             <button class="form__submit button button-blue" type="submit">Оставить заявку</button>
             <p class="form__policy">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="">Политикой конфиденциальности</a></p>
@@ -282,6 +283,7 @@
             <label class="form__upload-file"><span class="form__upload-label">Прикрепите файл до 35 мб (doc, pdf, txt)</span>
               <input class="form__upload-input" type="file" name="file" accept=".doc, .pdf, .text" hidden>
             </label><span class="form__field-error">Неверный формат или размер файла</span>
+            <button class="button button-blue form__upload-reset" type="button">Удалить файл</button>
           </div>
           <button class="form__submit button button-blue" type="submit">Оставить заявку</button>
           <p class="form__policy">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="">Политикой конфиденциальности</a></p>

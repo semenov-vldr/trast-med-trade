@@ -103,6 +103,7 @@ var header = document.querySelector("header.header");
 if (header) {
   var headerNavProd = header.querySelector(".header__nav-prod");
   var headerNavProdList = header.querySelector(".header__nav-prod-list");
+  var dialogs = document.querySelectorAll("dialog");
   headerNavProd.addEventListener("click", function () {
     headerNavProd.classList.toggle("active");
     headerNavProdList.classList.toggle("active");
@@ -163,49 +164,105 @@ if (partners) {
 
 var products = document.querySelector(".products");
 if (products) {
+  var productSwiper = products.querySelector(".products__slider");
+  var swiperInstance = productSwiper === null || productSwiper === void 0 ? void 0 : productSwiper.swiper;
+  var productSlides = products.querySelectorAll(".products__item");
   var productsTabs = products.querySelectorAll(".products__tabs-list .products__tabs-item");
   productsTabs.forEach(function (productsTab) {
     productsTab.addEventListener("click", function () {
+      var dataTabCat = productsTab.dataset.category;
       productsTabs.forEach(function (tab) {
         return tab.classList.toggle("active", tab === productsTab);
       });
+      productSlides.forEach(function (productSlide) {
+        var dataSlideCat = productSlide.dataset.category;
+        var isActiveSlide = dataTabCat !== dataSlideCat && dataTabCat !== "all";
+        productSlide.classList.toggle("hidden", isActiveSlide);
+      });
+      swiperInstance === null || swiperInstance === void 0 || swiperInstance.update();
     });
   });
 }
 "use strict";
 
-var _this = void 0;
 var forms = document.querySelectorAll("form.form");
 if (forms) {
   forms.forEach(function (form) {
+    var formUploadError = form.querySelector(".form__upload-zone .form__field-error");
+    var formUploadLabel = form.querySelector(".form__upload-label");
+    var formUploadLabelDefaultText = formUploadLabel.textContent;
+    var resetBtn = form.querySelector(".form__upload-reset");
     var fileInput = form.querySelector(".form__upload-input");
-    fileInput.addEventListener("change", function () {
-      var file = fileInput.files[0];
-      console.log(file.name);
+    var acceptFileInput = fileInput.accept;
+    function resetFormUploadError() {
+      formUploadError.classList.add("active");
+      fileInput.value = "";
+      setTimeout(function () {
+        return formUploadError.classList.remove("active");
+      }, 5000);
+    }
+    function fileLoaded(file) {
+      if (!file) return;
+      // Валидация размера файла
       var maxSizeFile = 1024 * 1024 * 35; // 35МБ
-      var formUploadError = fileInput.querySelector(".form__upload-error");
-      var formUploadLabel = form.querySelector(".form__upload-label");
-      var message = "Неверный формат файла";
       if (file.size > maxSizeFile) {
-        formUploadError.textContent = message;
-        _this.value = "";
+        formUploadError.textContent = "Размер файла превышает 35МБ";
+        resetFormUploadError();
+        return;
       }
-      formUploadLabel.textContent = "\u0424\u0430\u0439\u043B ".concat(file.name, " \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D");
+
+      // Валидация типа файла
+      var fileName = file.name;
+      var fileExtension = "." + fileName.slice((fileName.lastIndexOf(".") - 1 >>> 0) + 2); // Расширение файла
+      if (!acceptFileInput.includes(fileExtension)) {
+        formUploadError.textContent = "Неверный формат файла";
+        resetFormUploadError();
+        return;
+      }
+      formUploadLabel.innerHTML = "\u0424\u0430\u0439\u043B <span>".concat(file.name, "</span> \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D");
+      resetBtn.classList.add("active");
+      console.log("\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u0444\u0430\u0439\u043B: ".concat(fileInput.value));
+    }
+    ;
+    fileInput.addEventListener("change", function (e) {
+      return fileLoaded(fileInput.files[0]);
+    });
+
+    // Drag and Drop
+    ["dragover", "drop"].forEach(function (event) {
+      document.addEventListener(event, function (evt) {
+        evt.preventDefault();
+        return false;
+      });
     });
     var dropZone = form.querySelector(".form__upload-file");
-    dropZone.addEventListener("dragover", function (e) {
+    dropZone.addEventListener("dragenter", function (e) {
       e.preventDefault();
-      dropZone.classList.toggle("active", true);
+      dropZone.classList.add("active");
+    });
+    dropZone.addEventListener("dragleave", function () {
+      dropZone.classList.remove("active");
     });
     dropZone.addEventListener("drop", function (e) {
-      e.preventDefault();
-      dropZone.classList.toggle("active", false); // добавить стили css
       fileInput.files = e.dataTransfer.files;
+      fileLoaded(fileInput.files[0]);
+      dropZone.classList.remove("active");
+    });
+    resetBtn.addEventListener("click", function () {
+      fileInput.value = "";
+      formUploadLabel.textContent = formUploadLabelDefaultText;
+      resetBtn.classList.remove("active");
+    });
+    form.addEventListener("submit", function () {
+      form.reset();
+      formUploadLabel.textContent = formUploadLabelDefaultText;
     });
   });
-  var maskTel = new Inputmask("+7 (999) 999-99-99");
-  maskTel.mask("[type='tel']");
 }
+
+// Добавление маски для номера телефона
+var maskTel = new Inputmask("+7 (999) 999-99-99");
+maskTel.mask("[type='tel']");
 "use strict";
 
 function closeOnBackDropClick(_ref) {
