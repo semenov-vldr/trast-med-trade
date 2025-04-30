@@ -2,11 +2,9 @@ const gulp = require('gulp');
 
 const gulpPug =     require('gulp-pug');
 const sass =        require('gulp-dart-sass');
-const sassGlob =    require('gulp-sass-glob');
-//const server =    require('gulp-server-livereload');
+const sassGlob =    require('gulp-sass-glob');;
 const browserSync = require('browser-sync').create();
 const clean =       require('gulp-clean');
-const fs =          require('fs'); // File System
 const sourceMaps =  require('gulp-sourcemaps');
 const plumber =     require('gulp-plumber');
 const notify =      require('gulp-notify');
@@ -14,22 +12,11 @@ const concatJs =    require('gulp-concat');
 const concatCss =   require('gulp-concat-css');
 
 const babel =       require('gulp-babel');
-//const imagemin =  require('gulp-imagemin');
-const changed =     require('gulp-changed');
+//const changed =     require('gulp-changed');
+const newer =       require('gulp-newer');
 
 
 // ---- Tasks ----
-
-// Clean
-// gulp.task('clean:dev', function (done) {
-//   if (fs.existsSync('./build/')) {
-//     return gulp
-//       .src('./build/', {read: false})
-//       .pipe(clean());
-//   }
-//   done();
-// });
-
 
 gulp.task('clean:dev', function() {
   return gulp.src('build', {allowEmpty: true}).pipe(clean()); // Удаляем папку build перед сборкой
@@ -50,20 +37,20 @@ const plumberNotify = (title) => {
 gulp.task("pug:dev", function () {
   return gulp
     .src("./src/pages/**/*.pug")
-    .pipe(changed("./build/", { hasChanged: changed.compareContents }))
+    .pipe(newer("./build/"))
     .pipe(plumber(plumberNotify("Error HTML")))
-    .pipe(gulpPug({}))
+    .pipe(gulpPug({
+      pretty: true,
+    }))
     .pipe(gulp.dest("./build/"))
-    .pipe(browserSync.reload({
-      stream: true,
-    }));
+    .pipe(browserSync.stream());
 });
 
 // Sass
 gulp.task("sass:dev", function () { // Добавить autoprefixer, csso
   return gulp
     .src("./src/sass/main.sass")
-    .pipe(changed("./build/css/"))
+    .pipe(newer("./build/css/"))
     .pipe(plumber(plumberNotify("Error Sass")))
     .pipe(sourceMaps.init())
     .pipe(sassGlob())
@@ -71,9 +58,7 @@ gulp.task("sass:dev", function () { // Добавить autoprefixer, csso
     .pipe(sourceMaps.write())
     .pipe(concatCss("main.css"))
     .pipe(gulp.dest("./build/assets/css/"))
-    .pipe(browserSync.reload({
-        stream: true,
-      }));
+    .pipe(browserSync.stream());
 });
 
 // Styles Libs
@@ -82,9 +67,7 @@ gulp.task("style:libs:dev", function () {
     .src("./src/libs/**/*.css")
     .pipe(concatCss("libs.min.css"))
     .pipe(gulp.dest("./build/assets/css/"))
-    .pipe(browserSync.reload({
-    stream: true,
-  }));
+    .pipe(browserSync.stream());
 });
 
 
@@ -92,7 +75,7 @@ gulp.task("style:libs:dev", function () {
 gulp.task("images:dev", function () {
   return gulp
     .src("./src/img/**/*.{png,svg,jpg,jpeg,gif,webp,ico}")
-    .pipe(changed("./build/img/"))
+    .pipe(newer("./build/img/"))
     // .pipe(imagemin({ verbose: true } ))
     .pipe(gulp.dest("./build/assets/img/"))
 });
@@ -101,7 +84,7 @@ gulp.task("images:dev", function () {
 gulp.task("fonts:dev", function () {
   return gulp
     .src("./src/fonts/**/*")
-    .pipe(changed("./build/fonts/"))
+    .pipe(newer("./build/fonts/"))
     .pipe(gulp.dest("./build/assets/fonts/"))
 });
 
@@ -109,7 +92,7 @@ gulp.task("fonts:dev", function () {
 gulp.task("files:dev", function () {
   return gulp
     .src("./src/files/**/*")
-    .pipe(changed("./build/files/"))
+    .pipe(newer("./build/files/"))
     .pipe(gulp.dest("./build/assets/files/"))
 });
 
@@ -122,14 +105,12 @@ gulp.task('scripts:dev', function () {
       './src/blocks/**/*.js',
       './src/components/**/*.js'
     ])
-    .pipe(changed("./build/scripts/"))
+    .pipe(newer("./build/scripts/"))
     .pipe(plumber(plumberNotify("JS")))
     .pipe(babel())
     .pipe(concatJs("main.js"))
     .pipe(gulp.dest('./build/assets/scripts/'))
-    .pipe(browserSync.reload({
-        stream: true,
-      }));
+    .pipe(browserSync.stream());
 });
 
 // Libs JS

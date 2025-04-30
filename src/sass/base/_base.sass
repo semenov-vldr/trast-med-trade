@@ -7,7 +7,8 @@ html
   color: $text
   font-variant-numeric: lining-nums
   &.js-no-scroll,
-  &:has(dialog[open])
+  &:has(dialog[open]),
+  &:has(.header .header__nav-prod.active)
     overflow-y: hidden
 
 
