@@ -1,4 +1,4 @@
-.modal
+.message-success
   width: calc(100% - 32px)
   max-width: 550px
   margin: 0 auto
@@ -12,33 +12,39 @@
   color: $text
   &::backdrop
     background-color: rgba($blue, 0.5)
-  @include mobile
-    padding: 16px
+  @include tablet
+    height: 100%
+    width: 100%
 
   &__body
-    display: flex
-    flex-direction: column
-    gap: 20px
-
-  &__heading
+    position: relative
     display: flex
     flex-direction: column
     gap: 16px
+    @include tablet
+      align-items: center
+      height: 100%
+      justify-content: center
 
   &__close
     position: absolute
-    right: 12px
-    top: 12px
+    right: 0
+    top: 0
+
+  &__icon
+    width: 96px
+    margin-bottom: 16px
+    margin-right: auto
+    @include tablet
+      margin-right: initial
+    @include mobile
+      width: 72px
 
   &__title
-    width: 80%
     font-size: 24px
-    text-wrap: balance
     font-weight: 500
-    @include tablet
-      width: 90%
-      font-size: 20px
-  &__subtitle
-    color: $dark-gray
     @include mobile
-      font-size: 14px
+      font-size: 20px
+
+  &__text
+    color: $dark-gray

@@ -6,30 +6,34 @@ header.header
 
         button.header__burger.button.button-blue.burger
 
-
         .header__main
 
             button.header__nav-prod.button.button-blue.burger Продукция
 
             nav.header__nav-prod-list
                 a.header__nav-prod-link(href="##")
-                    img.header__nav-prod-link-img(src="./assets/img/nav-products/01.png")
+                    .header__nav-prod-link-img
+                        img(src="./assets/img/directions/01.svg")
                     h3.header__nav-prod-link-title Биохимия
 
                 a.header__nav-prod-link(href="##")
-                    img.header__nav-prod-link-img(src="./assets/img/nav-products/02.png")
+                    .header__nav-prod-link-img
+                        img(src="./assets/img/directions/03.svg")
                     h3.header__nav-prod-link-title Анализ мочи
 
                 a.header__nav-prod-link(href="##")
-                    img.header__nav-prod-link-img(src="./assets/img/nav-products/03.png")
+                    .header__nav-prod-link-img
+                        img(src="./assets/img/directions/02.svg")
                     h3.header__nav-prod-link-title Гематология
 
                 a.header__nav-prod-link(href="##")
-                    img.header__nav-prod-link-img(src="./assets/img/nav-products/04.png")
+                    .header__nav-prod-link-img
+                        img(src="./assets/img/directions/04.svg")
                     h3.header__nav-prod-link-title Расходные материалы
 
                 a.header__nav-prod-link(href="##")
-                    img.header__nav-prod-link-img(src="./assets/img/nav-products/05.png")
+                    .header__nav-prod-link-img
+                        img(src="./assets/img/directions/05.svg")
                     h3.header__nav-prod-link-title Системы забора крови
 
             nav.header__nav
@@ -38,15 +42,9 @@ header.header
                 a.header__nav-link(href="##") Акции
 
 
-
             .header__contacts
-                a(href="tel:+78007000266") 8 (800) 700 02 66
-                p ПН-ПТ 9:00 -17:00
+                a.header__contacts-item.header__contacts-phone(href="tel:+78007000266") 8 (800) 700 02 66
+                a.header__contacts-item.header__contacts-email(href="mailto:sale1@t-mt.ru") sale1@t-mt.ru
+                p.header__contacts-time Пн-Пт 9:00 -17:00
 
             button.header__feedback.button.button-blue(type="button" onclick="window.modal.showModal()") Оставить заявку
-
-
-
-
-
-

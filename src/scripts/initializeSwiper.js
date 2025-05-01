@@ -33,3 +33,4 @@ function initializeSwiper(containerClass) {
   initializeSwiper("offers");
   initializeSwiper("directions");
   initializeSwiper("products");
+  initializeSwiper("partners");

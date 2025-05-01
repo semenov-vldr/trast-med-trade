@@ -2,7 +2,7 @@
 dialog.modal#modal()
     .modal__body
         .modal__heading
-            button.modal__close(onclick="window.modal.close()")
+            button.button-close.modal__close(onclick="window.modal.close()")
             h3.modal__title Подберем оптимальное оборудование, реагенты или расходные материалы
             p.modal__subtitle Задайте нам вопрос или прикрепите техническое задание
         include ../form/form.pug

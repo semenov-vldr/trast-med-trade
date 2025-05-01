@@ -1,7 +1,11 @@
 //Партнеры
 section.partners
-    .partners__container.container 
-        h2.partners__title.title-section Сотрудничаем с производителями передовых технологий
+    .partners__container.container
+        .heading-with-nav
+            h2.title-section.partners__title Сотрудничаем с производителями передовых технологий
+            .swiper-navigation.partners__nav
+                .swiper-button-prev
+                .swiper-button-next
         .swiper.partners__slider
             .swiper-wrapper.partners__list
 
@@ -30,4 +34,3 @@ section.partners
                     img.partners__item-img(src="./assets/img/partners/03.svg")
 
             .swiper-pagination
-

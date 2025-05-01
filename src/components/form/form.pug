@@ -1,15 +1,12 @@
 form.form(method="post")
     label.form__field Как к Вам обращаться?*
-        input(type="text" name="name" placeholder="Ваше имя" minlength="2" required)
-        span.form__field-error Неверный ввод имени
+        input(type="text" name="name" placeholder="Ваше имя" minlength="2" maxlength="20" required)
 
     label.form__field Телефон*
         input(type="tel" name="tel" placeholder="Ваш телефон" inputmode="tel" required)
-        span.form__field-error Неверный ввод телефона
 
     label.form__field Почта*
         input(type="email" name="email" placeholder="Ваша почта" required)
-        span.form__field-error Неверный ввод почты
 
     label.form__field Комментарий
         textarea(name="comment" rows="4" placeholder="Введите комментарий")
@@ -24,10 +21,3 @@ form.form(method="post")
     button.form__submit.button.button-blue(type="submit") Оставить заявку
 
     p.form__policy Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с #[a(href="") Политикой конфиденциальности]
-
-    
-
-
-
-
-        
