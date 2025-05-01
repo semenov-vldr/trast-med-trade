@@ -5,7 +5,7 @@
     <title>Акции</title>
     <meta name="viewport" content="width=device-width,initial-scale=1 shrink-to-fit=no">
     <!--favicon-->
-    <!--link(rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/favicon-180x180.ico")-->
+    <link rel="apple-touch-icon" sizes="48x48" href="./assets/favicon/favicon.ico">
     <!--link(rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.ico")-->
     <!--link(rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.ico")-->
     <link rel="stylesheet" type="text/css" href="./assets/css/libs.min.css">
@@ -18,15 +18,20 @@
         <button class="header__burger button button-blue burger"></button>
         <div class="header__main">
           <button class="header__nav-prod button button-blue burger">Продукция</button>
-          <nav class="header__nav-prod-list"><a class="header__nav-prod-link" href="##"><img class="header__nav-prod-link-img" src="./assets/img/nav-products/01.png">
-              <h3 class="header__nav-prod-link-title">Биохимия</h3></a><a class="header__nav-prod-link" href="##"><img class="header__nav-prod-link-img" src="./assets/img/nav-products/02.png">
-              <h3 class="header__nav-prod-link-title">Анализ мочи</h3></a><a class="header__nav-prod-link" href="##"><img class="header__nav-prod-link-img" src="./assets/img/nav-products/03.png">
-              <h3 class="header__nav-prod-link-title">Гематология</h3></a><a class="header__nav-prod-link" href="##"><img class="header__nav-prod-link-img" src="./assets/img/nav-products/04.png">
-              <h3 class="header__nav-prod-link-title">Расходные материалы</h3></a><a class="header__nav-prod-link" href="##"><img class="header__nav-prod-link-img" src="./assets/img/nav-products/05.png">
+          <nav class="header__nav-prod-list"><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/01.svg"></div>
+              <h3 class="header__nav-prod-link-title">Биохимия</h3></a><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/03.svg"></div>
+              <h3 class="header__nav-prod-link-title">Анализ мочи</h3></a><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/02.svg"></div>
+              <h3 class="header__nav-prod-link-title">Гематология</h3></a><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/04.svg"></div>
+              <h3 class="header__nav-prod-link-title">Расходные материалы</h3></a><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/05.svg"></div>
               <h3 class="header__nav-prod-link-title">Системы забора крови</h3></a></nav>
           <nav class="header__nav"><a class="header__nav-link" href="##">О компании</a><a class="header__nav-link" href="##">Документы</a><a class="header__nav-link" href="##">Акции</a></nav>
-          <div class="header__contacts"><a href="tel:+78007000266">8 (800) 700 02 66</a>
-            <p>ПН-ПТ 9:00 -17:00</p>
+          <div class="header__contacts"><a class="header__contacts-item header__contacts-phone" href="tel:+78007000266">8 (800) 700 02 66</a><a class="header__contacts-item header__contacts-email" href="mailto:sale1@t-mt.ru">sale1@t-mt.ru</a>
+            <p class="header__contacts-time">Пн-Пт 9:00 -17:00</p>
           </div>
           <button class="header__feedback button button-blue" type="button" onclick="window.modal.showModal()">Оставить заявку</button>
         </div>
@@ -43,26 +48,26 @@
           <button class="button button-outline footer__button" type="button" onclick="window.modal.showModal()">Оставить заявку</button>
           <div class="footer__contacts footer__contacts--2"><a href="tel:+78007000266">8 (800) 700 02 66</a><a href="mailto:sale1@t-mt.ru">sale1@t-mt.ru</a></div>
         </div>
-        <div class="footer__privacy"><a href="" target="_blank">Политика конфиденциальности</a><span>2024 © ООО «ТрастМедТрейд»</span></div>
+        <div class="footer__privacy"><a href="" target="_blank">Политика конфиденциальности</a><span onclick="window.messageSuccess.showModal()">2024 © ООО «ТрастМедТрейд»</span></div>
       </div>
     </footer>
     <!--Модальное окно-->
     <dialog class="modal" id="modal">
       <div class="modal__body">
         <div class="modal__heading">
-          <button class="modal__close" onclick="window.modal.close()"></button>
+          <button class="button-close modal__close" onclick="window.modal.close()"></button>
           <h3 class="modal__title">Подберем оптимальное оборудование, реагенты или расходные материалы</h3>
           <p class="modal__subtitle">Задайте нам вопрос или прикрепите техническое задание</p>
         </div>
         <form class="form" method="post">
           <label class="form__field">Как к Вам обращаться?*
-            <input type="text" name="name" placeholder="Ваше имя" minlength="2" required><span class="form__field-error">Неверный ввод имени</span>
+            <input type="text" name="name" placeholder="Ваше имя" minlength="2" maxlength="20" required>
           </label>
           <label class="form__field">Телефон*
-            <input type="tel" name="tel" placeholder="Ваш телефон" inputmode="tel" required><span class="form__field-error">Неверный ввод телефона</span>
+            <input type="tel" name="tel" placeholder="Ваш телефон" inputmode="tel" required>
           </label>
           <label class="form__field">Почта*
-            <input type="email" name="email" placeholder="Ваша почта" required><span class="form__field-error">Неверный ввод почты</span>
+            <input type="email" name="email" placeholder="Ваша почта" required>
           </label>
           <label class="form__field">Комментарий
             <textarea name="comment" rows="4" placeholder="Введите комментарий"></textarea>
@@ -76,6 +81,14 @@
           <button class="form__submit button button-blue" type="submit">Оставить заявку</button>
           <p class="form__policy">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="">Политикой конфиденциальности</a></p>
         </form>
+      </div>
+    </dialog>
+    <!-- Сообщение об успешной отправки формы-->
+    <dialog class="message-success" id="messageSuccess">
+      <div class="message-success__body">
+        <button class="button-close message-success__close" type="button" onclick="window.messageSuccess.close()"></button><img class="message-success__icon" src="./assets/img/icons/success.svg">
+        <h4 class="message-success__title">Ваша заявка успешно отправлена!</h4>
+        <p class="message-success__text">Скоро с вами свяжется наш менеджер!</p>
       </div>
     </dialog>
   </body>
