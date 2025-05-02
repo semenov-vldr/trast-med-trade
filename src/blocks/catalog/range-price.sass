@@ -1,0 +1,57 @@
+.range
+  display: flex
+  flex-direction: column
+
+  &__values
+    position: relative
+    display: flex
+    gap: 8px
+    background-color: $bg
+    border-radius: 100px
+    color: $blue
+    min-height: 48px
+    #price-max
+      text-align: right
+    &::after
+      content: ""
+      position: absolute
+      width: 1px
+      height: 16px
+      background-color: $gray
+      top: 50%
+      right: 50%
+      transform: translateY(-50%)
+
+
+
+  &__slider
+    margin: 0 auto
+    width: calc(100% - 32px)
+
+  .noUi-base
+    background-color: $blue
+
+  .noUi-horizontal
+    border: none
+    height: 1px
+
+  .noUi-connect
+    background-color: $blue
+
+  .noUi-handle
+    background-color: $blue
+    width: 16px
+    height: 16px
+    border-radius: 50%
+    top: 0
+    transform: translateY(-50%)
+    border: none
+    box-shadow: none
+    cursor: pointer
+    &::before,
+    &::after
+      display: none
+  .noUi-handle-lower
+    right: -16px
+  .noUi-handle-upper
+    right: 0

@@ -1,0 +1,99 @@
+// Каталог
+section.catalog
+    .catalog__container.container
+        h1.catalog__title Гематология
+
+        // Табы фильтра
+        .catalog__tabs.tabs__list
+            button.tabs__item.active(data-category="all") Все
+            button.tabs__item(data-category="1") Гематология
+            button.tabs__item(data-category="2") Биохимия
+            button.tabs__item(data-category="3") Анализ мочи
+            button.tabs__item(data-category="4") Системы забора крови
+
+        .catalog__body
+
+            form.catalog__filter.filter
+                h3.filter__title Фильтр
+                // Цена
+                fieldset.filter__fieldset
+                    legend.filter__fieldset-title Цена ₽
+
+                    .range.range--price
+                        .range__values
+                            input#price-min(type="text" data-min="1000")
+                            input#price-max(type="text" data-max="240000")
+                        .range__slider#range-price
+
+                // Бренд
+                fieldset.filter__fieldset
+                    legend.filter__fieldset-title Бренд
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Zybio" name="brand")
+                        | Zybio
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Dymind" name="brand")
+                        | Dymind
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Sysmex" name="brand")
+                        | Sysmex
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Cepheid" name="brand")
+                        | Cepheid
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Abbott" name="brand")
+                        | Abbott
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="BioRad" name="brand")
+                        | BioRad
+
+
+                // Страна-производитель
+                fieldset.filter__fieldset
+                    legend.filter__fieldset-title Страна-производитель
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Россия" name="country")
+                        | Россия
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Германия" name="country")
+                        | Германия
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="США" name="country")
+                        | США
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Великобритания" name="country")
+                        | Великобритания
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Швеция" name="country")
+                        | Швеция
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Китай" name="country")
+                        | Китай
+
+
+                // Тип управления
+                fieldset.filter__fieldset
+                    legend.filter__fieldset-title Тип управления
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Автоматический" name="control")
+                        | Россия
+
+                    label.filter__checkbox
+                        input(type="checkbox" value="Полуавтоматический" name="control")
+                        | Германия
+
+
+                button.filter__reset.button.button-outline-dark(type="reset") Сбросить фильтры

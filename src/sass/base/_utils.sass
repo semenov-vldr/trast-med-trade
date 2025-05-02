@@ -90,6 +90,15 @@ section
       border: 1px solid currentColor
       opacity: 0.5
 
+  &.button-outline-dark
+    color: $text
+    border: 1px solid currentColor
+    &:hover
+      color: $white
+      background-color: $blue
+      border-color: $blue
+
+
 .button-close
   background-image: url("../img/icons/close-modal.svg")
   width: 40px
@@ -129,6 +138,27 @@ section
     width: 310px
   @media (max-width: 360px)
     width: 280px
+
+
+// Табы
+.tabs__list
+  display: flex
+  gap: 8px
+  align-items: center
+  overflow: auto
+
+  .tabs__item
+    background-color: $white
+    border-radius: 100px
+    padding: 8px 32px
+    font-size: 14px
+    border: 1px solid transparent
+    white-space: nowrap
+    &:hover
+      border-color: $blue
+    &.active
+      background-color: $blue
+      color: $white
 
 
 // --- Swiper.js ---

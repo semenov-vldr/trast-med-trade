@@ -1,0 +1,9 @@
+// Хлебные крошки
+mixin breadcrumbs(links)
+    .breadcrumbs
+        .container.breadcrumbs__container
+          each link in links
+              if link.url
+                  a.breadcrumbs__item(href=link.url)= link.text
+              else
+                  span.breadcrumbs__item= link.text

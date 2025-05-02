@@ -1,0 +1,81 @@
+.catalog
+
+  &__title
+    font-size: 44px
+    margin-bottom: 24px
+    @include tablet
+      font-size: 32px
+      margin-bottom: 12px
+
+  &__body
+    display: grid
+    grid-template-columns: 290px 1fr
+    margin-top: 48px
+
+  .filter
+    background-color: $white
+    border-radius: 20px
+    padding: 20px
+    display: flex
+    flex-direction: column
+    gap: 32px
+
+    input[type="text"],
+    input[type="number"]
+      outline: none
+      padding: 8px 14px
+      width: 100%
+      -moz-appearance: textfield
+
+    &__title
+      font-size: 20px
+      text-transform: uppercase
+      margin-bottom: 32px
+      @include tablet
+        font-size: 18px
+
+    &__fieldset
+      display: flex
+      flex-direction: column
+      gap: 12px
+      @include tablet
+        gap: 20px
+
+      &-title
+        font-size: 14px
+        color: $dark-gray
+        text-transform: uppercase
+        margin-bottom: 12px
+
+    &__checkbox
+      position: relative
+      display: flex
+      align-items: center
+      gap: 12px
+      font-size: 14px
+      user-select: none
+      width: fit-content
+      &::before
+        content: ""
+        width: 20px
+        height: 20px
+        border-radius: 2px
+        background-color: $bg
+        border: 1px solid $gray
+        background-size: 70%
+        background-repeat: no-repeat
+        background-position: center
+      &:hover::before
+        border-color: rgba($blue, 0.5)
+      input[type="checkbox"]
+        display: none
+      &:has(input[type="checkbox"]:checked)::before
+        background-color: $blue
+        border: 1px solid $blue
+        background-image: url("../img/icons/check.svg")
+
+
+    &__reset
+      width: 100%
+
+

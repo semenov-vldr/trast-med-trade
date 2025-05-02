@@ -10,8 +10,6 @@ if (products) {
     productsTab.addEventListener("click", () => {
       const dataTabCat = productsTab.dataset.category;
 
-      productsTabs.forEach(tab => tab.classList.toggle("active", tab === productsTab));
-
       productSlides.forEach(productSlide => {
         const dataSlideCat = productSlide.dataset.category;
         const isActiveSlide = dataTabCat !== dataSlideCat && dataTabCat !== "all";
