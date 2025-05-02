@@ -1,0 +1,297 @@
+
+<!-- Хлебные крошки--><!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <title>Траст Мед Трейд</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1 shrink-to-fit=no">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="48x48" href="./assets/favicon/favicon.ico">
+    <!--link(rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.ico")-->
+    <!--link(rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.ico")-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/libs.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+  </head>
+  <body>
+    <!--Header-->
+    <header class="header">
+      <div class="header__container container"><a class="header__logo" href="/"><img src="./assets/img/logo.svg"></a>
+        <button class="header__burger button button-blue burger"></button>
+        <div class="header__main">
+          <button class="header__nav-prod button button-blue burger">Продукция</button>
+          <nav class="header__nav-prod-list"><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/01.svg"></div>
+              <h3 class="header__nav-prod-link-title">Биохимия</h3></a><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/03.svg"></div>
+              <h3 class="header__nav-prod-link-title">Анализ мочи</h3></a><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/02.svg"></div>
+              <h3 class="header__nav-prod-link-title">Гематология</h3></a><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/04.svg"></div>
+              <h3 class="header__nav-prod-link-title">Расходные материалы</h3></a><a class="header__nav-prod-link" href="##">
+              <div class="header__nav-prod-link-img"><img src="./assets/img/directions/05.svg"></div>
+              <h3 class="header__nav-prod-link-title">Системы забора крови</h3></a></nav>
+          <nav class="header__nav"><a class="header__nav-link" href="##">О компании</a><a class="header__nav-link" href="##">Документы</a><a class="header__nav-link" href="##">Акции</a></nav>
+          <div class="header__contacts"><a class="header__contacts-item header__contacts-phone" href="tel:+78007000266">8 (800) 700 02 66</a><a class="header__contacts-item header__contacts-email" href="mailto:sale1@t-mt.ru">sale1@t-mt.ru</a>
+            <p class="header__contacts-time">Пн-Пт 9:00 -17:00</p>
+          </div>
+          <button class="header__feedback button button-blue" type="button" onclick="window.modal.showModal()">Оставить заявку</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="breadcrumbs">
+        <div class="container breadcrumbs__container"><a class="breadcrumbs__item" href="/">Главная</a><a class="breadcrumbs__item" href="/">Каталог</a><span class="breadcrumbs__item">Гематология</span>
+        </div>
+      </div>
+      <!-- Каталог-->
+      <section class="catalog">
+        <div class="catalog__container container">
+          <h1 class="catalog__title">Гематология</h1>
+          <!-- Табы фильтра-->
+          <div class="catalog__tabs tabs__list">
+            <button class="tabs__item active" data-category="all">Все</button>
+            <button class="tabs__item" data-category="1">Гематология</button>
+            <button class="tabs__item" data-category="2">Биохимия</button>
+            <button class="tabs__item" data-category="3">Анализ мочи</button>
+            <button class="tabs__item" data-category="4">Системы забора крови</button>
+          </div>
+          <div class="catalog__body">
+            <form class="catalog__filter filter">
+              <h3 class="filter__title">Фильтр</h3>
+              <!-- Цена-->
+              <fieldset class="filter__fieldset">
+                <legend class="filter__fieldset-title">Цена ₽</legend>
+                <div class="range range--price">
+                  <div class="range__values">
+                    <input id="price-min" type="text" data-min="1000">
+                    <input id="price-max" type="text" data-max="240000">
+                  </div>
+                  <div class="range__slider" id="range-price"></div>
+                </div>
+              </fieldset>
+              <!-- Бренд-->
+              <fieldset class="filter__fieldset">
+                <legend class="filter__fieldset-title">Бренд</legend>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Zybio" name="brand">Zybio
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Dymind" name="brand">Dymind
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Sysmex" name="brand">Sysmex
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Cepheid" name="brand">Cepheid
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Abbott" name="brand">Abbott
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="BioRad" name="brand">BioRad
+                </label>
+              </fieldset>
+              <!-- Страна-производитель-->
+              <fieldset class="filter__fieldset">
+                <legend class="filter__fieldset-title">Страна-производитель</legend>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Россия" name="country">Россия
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Германия" name="country">Германия
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="США" name="country">США
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Великобритания" name="country">Великобритания
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Швеция" name="country">Швеция
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Китай" name="country">Китай
+                </label>
+              </fieldset>
+              <!-- Тип управления-->
+              <fieldset class="filter__fieldset">
+                <legend class="filter__fieldset-title">Тип управления</legend>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Автоматический" name="control">Россия
+                </label>
+                <label class="filter__checkbox">
+                  <input type="checkbox" value="Полуавтоматический" name="control">Германия
+                </label>
+              </fieldset>
+              <button class="filter__reset button button-outline-dark" type="reset">Сбросить фильтры</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!--Наша продукция-->
+      <section class="products">
+        <div class="products__container container">
+          <h2 class="title-section">Наша продукция</h2>
+          <div class="products__tabs">
+            <div class="products__tabs-list tabs__list">
+              <button class="tabs__item products__tabs-item active" data-category="all">Все</button>
+              <button class="tabs__item products__tabs-item" data-category="1">Гематология</button>
+              <button class="tabs__item products__tabs-item" data-category="2">Биохимия</button>
+              <button class="tabs__item products__tabs-item" data-category="3">Анализ мочи</button>
+              <button class="tabs__item products__tabs-item" data-category="4">Системы забора крови</button>
+            </div>
+            <div class="swiper-navigation products__nav">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+          <div class="products__slider swiper">
+            <div class="swiper-wrapper"><a class="swiper-slide products__item width-slide" href="##" data-category="2"><span class="badge-slide">NEW</span><img class="products__item-img" src="./assets/img/products/01.png">
+                <h3 class="products__item-title">Zybio U1600</h3>
+                <p class="products__item-desc">Биохимический анализатор мочи</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="2"><img class="products__item-img" src="./assets/img/products/02.png">
+                <h3 class="products__item-title">Zybio EXC200</h3>
+                <p class="products__item-desc">Биохимический анализатор</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="1"><img class="products__item-img" src="./assets/img/products/03.png">
+                <h3 class="products__item-title">Dymind DH76</h3>
+                <p class="products__item-desc">Анализатор 5-Diff автоматический гематологический</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="1"><img class="products__item-img" src="./assets/img/products/04.png">
+                <h3 class="products__item-title">Zybio Z50</h3>
+                <p class="products__item-desc">Гематологический анализатор</p></a></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+      <!--Обратная связь-->
+      <section class="feedback">
+        <div class="feedback__container container">
+          <div class="feedback__content">
+            <h2 class="title-section">Подберем оптимальное оборудование, реагенты или расходные материалы</h2>
+            <p class="feedback__text">Задайте нам вопрос или прикрепите техническое задание</p><img class="feedback__img" src="./assets/img/feedback-img.png">
+          </div>
+          <form class="form" method="post">
+            <label class="form__field">Как к Вам обращаться?*
+              <input type="text" name="name" placeholder="Ваше имя" minlength="2" maxlength="20" required>
+            </label>
+            <label class="form__field">Телефон*
+              <input type="tel" name="tel" placeholder="Ваш телефон" inputmode="tel" required>
+            </label>
+            <label class="form__field">Почта*
+              <input type="email" name="email" placeholder="Ваша почта" required>
+            </label>
+            <label class="form__field">Комментарий
+              <textarea name="comment" rows="4" placeholder="Введите комментарий"></textarea>
+            </label>
+            <div class="form__upload-zone">
+              <label class="form__upload-file"><span class="form__upload-label">Прикрепите файл до 35 мб (doc, pdf, txt)</span>
+                <input class="form__upload-input" type="file" name="file" accept=".doc, .pdf, .text" hidden>
+              </label><span class="form__field-error">Неверный формат или размер файла</span>
+              <button class="button button-blue form__upload-reset" type="button">Удалить файл</button>
+            </div>
+            <button class="form__submit button button-blue" type="submit">Оставить заявку</button>
+            <p class="form__policy">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="">Политикой конфиденциальности</a></p>
+          </form>
+        </div>
+      </section>
+      <!--Партнеры-->
+      <section class="partners">
+        <div class="partners__container container">
+          <div class="heading-with-nav">
+            <h2 class="title-section partners__title">Сотрудничаем с производителями передовых технологий</h2>
+            <div class="swiper-navigation partners__nav">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+          <div class="swiper partners__slider">
+            <div class="swiper-wrapper partners__list">
+              <div class="swiper-slide partners__item"><img class="partners__item-img" src="./assets/img/partners/01.svg"></div>
+              <div class="swiper-slide partners__item"><img class="partners__item-img" src="./assets/img/partners/02.svg"></div>
+              <div class="swiper-slide partners__item"><img class="partners__item-img" src="./assets/img/partners/03.svg"></div>
+              <div class="swiper-slide partners__item"><img class="partners__item-img" src="./assets/img/partners/04.svg"></div>
+              <div class="swiper-slide partners__item"><img class="partners__item-img" src="./assets/img/partners/02.svg"></div>
+              <div class="swiper-slide partners__item"><img class="partners__item-img" src="./assets/img/partners/01.svg"></div>
+              <div class="swiper-slide partners__item"><img class="partners__item-img" src="./assets/img/partners/04.svg"></div>
+              <div class="swiper-slide partners__item"><img class="partners__item-img" src="./assets/img/partners/03.svg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+      <!--Преимущества-->
+      <section class="advantages">
+        <div class="advantages__container container">
+          <h2 class="title-section advantages__title">Почему Trust Med Trade?</h2>
+          <div class="swiper advantages__slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide advantages__item width-slide"><img class="advantages__item-img" src="./assets/img/advantages/01.png">
+                <h3 class="advantages__item-title">Прямые поставки от производителей</h3>
+                <p class="advantages__item-text">Выгодные цены и сервис без посредников</p>
+              </div>
+              <div class="swiper-slide advantages__item width-slide"><img class="advantages__item-img" src="./assets/img/advantages/02.png">
+                <h3 class="advantages__item-title">Индивидуальный подход</h3>
+                <p class="advantages__item-text">Изучим вашу потребность или проблему, предложим оптимальное решение</p>
+              </div>
+              <div class="swiper-slide advantages__item width-slide"><img class="advantages__item-img" src="./assets/img/advantages/03.png">
+                <h3 class="advantages__item-title">Более 10 лет на рынке</h3>
+                <p class="advantages__item-text">Охотно делимся накопленным опытом и знаниями</p>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--Footer-->
+    <footer class="footer">
+      <div class="footer__container container"><a class="footer__logo" href="/"><img src="./assets/img/logo-light.svg"></a>
+        <nav class="footer__nav"><a class="footer__nav-link" href="##" target="_blank">Продукция</a><a class="footer__nav-link" href="about.html" target="_blank">О компании</a><a class="footer__nav-link" href="##" target="_blank">Документы</a><a class="footer__nav-link" href="stocks.html" target="_blank">Акции</a></nav>
+        <div class="footer__bottom">
+          <div class="footer__contacts footer__contacts--1"><span>г. Ставрополь, ул.Горная, д. 47А</span><span>ПН-ПТ 9:00-17:00</span></div>
+          <button class="button button-outline footer__button" type="button" onclick="window.modal.showModal()">Оставить заявку</button>
+          <div class="footer__contacts footer__contacts--2"><a href="tel:+78007000266">8 (800) 700 02 66</a><a href="mailto:sale1@t-mt.ru">sale1@t-mt.ru</a></div>
+        </div>
+        <div class="footer__privacy"><a href="" target="_blank">Политика конфиденциальности</a><span onclick="window.messageSuccess.showModal()">2024 © ООО «ТрастМедТрейд»</span></div>
+      </div>
+    </footer>
+    <!--Модальное окно-->
+    <dialog class="modal" id="modal">
+      <div class="modal__body">
+        <div class="modal__heading">
+          <button class="button-close modal__close" onclick="window.modal.close()"></button>
+          <h3 class="modal__title">Подберем оптимальное оборудование, реагенты или расходные материалы</h3>
+          <p class="modal__subtitle">Задайте нам вопрос или прикрепите техническое задание</p>
+        </div>
+        <form class="form" method="post">
+          <label class="form__field">Как к Вам обращаться?*
+            <input type="text" name="name" placeholder="Ваше имя" minlength="2" maxlength="20" required>
+          </label>
+          <label class="form__field">Телефон*
+            <input type="tel" name="tel" placeholder="Ваш телефон" inputmode="tel" required>
+          </label>
+          <label class="form__field">Почта*
+            <input type="email" name="email" placeholder="Ваша почта" required>
+          </label>
+          <label class="form__field">Комментарий
+            <textarea name="comment" rows="4" placeholder="Введите комментарий"></textarea>
+          </label>
+          <div class="form__upload-zone">
+            <label class="form__upload-file"><span class="form__upload-label">Прикрепите файл до 35 мб (doc, pdf, txt)</span>
+              <input class="form__upload-input" type="file" name="file" accept=".doc, .pdf, .text" hidden>
+            </label><span class="form__field-error">Неверный формат или размер файла</span>
+            <button class="button button-blue form__upload-reset" type="button">Удалить файл</button>
+          </div>
+          <button class="form__submit button button-blue" type="submit">Оставить заявку</button>
+          <p class="form__policy">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="">Политикой конфиденциальности</a></p>
+        </form>
+      </div>
+    </dialog>
+    <!-- Сообщение об успешной отправки формы-->
+    <dialog class="message-success" id="messageSuccess">
+      <div class="message-success__body">
+        <button class="button-close message-success__close" type="button" onclick="window.messageSuccess.close()"></button><img class="message-success__icon" src="./assets/img/icons/success.svg">
+        <h4 class="message-success__title">Ваша заявка успешно отправлена!</h4>
+        <p class="message-success__text">Скоро с вами свяжется наш менеджер!</p>
+      </div>
+    </dialog>
+  </body>
+  <script src="./assets/scripts/libs.min.js"></script>
+  <script src="./assets/scripts/main.js" type="module"></script>
+</html>

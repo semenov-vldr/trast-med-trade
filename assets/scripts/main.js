@@ -67,6 +67,22 @@ if (images) {
 }
 "use strict";
 
+// Добавить/убрать активность табов
+var blocksTabs = document.querySelectorAll(".tabs__list");
+if (blocksTabs) {
+  blocksTabs.forEach(function (blockTabs) {
+    var tabs = blockTabs.querySelectorAll(".tabs__item");
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (t) {
+          return t.classList.toggle("active", t === tab);
+        });
+      });
+    });
+  });
+}
+"use strict";
+
 var advantages = document.querySelector(".advantages");
 if (advantages) {
   var swiper = advantages.querySelector(".advantages__slider");
@@ -98,6 +114,60 @@ if (advantages) {
     }
   });
 }
+"use strict";
+"use strict";
+
+var rangeSliderInit = function rangeSliderInit(_ref) {
+  var rangeSliderID = _ref.rangeSliderID,
+    inputMinID = _ref.inputMinID,
+    inputMaxID = _ref.inputMaxID,
+    step = _ref.step;
+  var range = document.getElementById(rangeSliderID); // Ищем слайдер
+  var inputMin = document.getElementById(inputMinID); // Ищем input с меньшим значнием
+  var inputMax = document.getElementById(inputMaxID); // Ищем input с большим значнием
+
+  if (!range || !inputMin || !inputMax) return; // если этих элементов нет, прекращаем выполнение функции, чтобы не было ошибок
+
+  var inputs = [inputMin, inputMax]; // создаем массив из меньшего и большего значения
+
+  var minValue = +inputMin.dataset.min;
+  var maxValue = +inputMax.dataset.max;
+  noUiSlider.create(range, {
+    // инициализируем слайдер
+    start: [minValue, maxValue],
+    // устанавливаем начальные значения
+    connect: true,
+    // указываем что нужно показывать выбранный диапазон
+    range: {
+      // устанавливаем минимальное и максимальное значения
+      'min': minValue,
+      'max': maxValue
+    },
+    step: step // шаг изменения значений
+  });
+
+  range.noUiSlider.on('update', function (values, handle) {
+    // при изменений положения элементов управления слайдера изменяем соответствующие значения
+    inputs[handle].value = parseInt(values[handle]);
+  });
+  inputMin.addEventListener('change', function () {
+    // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
+    range.noUiSlider.set([this.value, null]);
+  });
+  inputMax.addEventListener('change', function () {
+    // при изменении большего значения в input - меняем положение соответствующего элемента управления
+    range.noUiSlider.set([null, this.value]);
+  });
+};
+var settingsRangePrice = {
+  rangeSliderID: "range-price",
+  inputMinID: "price-min",
+  inputMaxID: "price-max",
+  step: 1000
+};
+window.addEventListener('DOMContentLoaded', function () {
+  return rangeSliderInit(settingsRangePrice);
+});
 "use strict";
 
 var header = document.querySelector("header.header");
@@ -151,9 +221,6 @@ if (products) {
   productsTabs.forEach(function (productsTab) {
     productsTab.addEventListener("click", function () {
       var dataTabCat = productsTab.dataset.category;
-      productsTabs.forEach(function (tab) {
-        return tab.classList.toggle("active", tab === productsTab);
-      });
       productSlides.forEach(function (productSlide) {
         var dataSlideCat = productSlide.dataset.category;
         var isActiveSlide = dataTabCat !== dataSlideCat && dataTabCat !== "all";
