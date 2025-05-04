@@ -12,5 +12,4 @@ if (offers) {
         offersSlideContent.insertBefore(offerImg, offerDesc);
       });
     }
-
 }

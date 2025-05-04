@@ -1,4 +1,6 @@
 const rangeSliderInit = ({ rangeSliderID, inputMinID, inputMaxID, step }) => {
+  const resetButton = document.querySelector(".filter .filter__reset");
+
   const range = document.getElementById(rangeSliderID); // Ищем слайдер
   const inputMin = document.getElementById(inputMinID); // Ищем input с меньшим значнием
   const inputMax = document.getElementById(inputMaxID); // Ищем input с большим значнием
@@ -21,17 +23,28 @@ const rangeSliderInit = ({ rangeSliderID, inputMinID, inputMaxID, step }) => {
     }
   );
 
-  range.noUiSlider.on('update', function (values, handle) { // при изменений положения элементов управления слайдера изменяем соответствующие значения
+  // при изменений положения элементов управления слайдера изменяем соответствующие значения
+  range.noUiSlider.on('update', function (values, handle) {
     inputs[handle].value = parseInt(values[handle]);
   });
 
-  inputMin.addEventListener('change', function () { // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
+  // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
+  inputMin.addEventListener('change', function () {
     range.noUiSlider.set([this.value, null]);
   });
 
-  inputMax.addEventListener('change', function () { // при изменении большего значения в input - меняем положение соответствующего элемента управления
+  // при изменении большего значения в input - меняем положение соответствующего элемента управления
+  inputMax.addEventListener('change', function () {
     range.noUiSlider.set([null, this.value]);
   });
+
+  // Обработчик кнопки "Сбросить"
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      range.noUiSlider.reset();
+    });
+  }
+
 };
 
 

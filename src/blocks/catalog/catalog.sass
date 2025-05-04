@@ -11,6 +11,9 @@
     display: grid
     grid-template-columns: 290px 1fr
     margin-top: 48px
+    gap: 16px
+    @include tablet
+      grid-template-columns: 1fr
 
   .filter
     background-color: $white
@@ -19,6 +22,46 @@
     display: flex
     flex-direction: column
     gap: 32px
+    height: fit-content
+    @include tablet
+      padding: 12px
+      &:has(.filter__heading.active)
+        position: fixed
+        inset: 0
+        width: 100%
+        z-index: 11
+        overflow-y: auto
+        border-radius: 0
+        padding: 16px
+        height: auto
+      &:has(.filter__heading.active)
+        .filter__body
+          display: flex
+        .filter__heading
+          flex-direction: row-reverse
+          justify-content: flex-end
+        .filter__icon
+          display: none
+        .filter__back
+          display: inline-block
+
+    &:has(input[type="checkbox"]:checked)
+      .filter__submit
+        display: flex
+      .filter__title::after
+        display: inline-block
+
+    &__heading
+      display: flex
+      justify-content: space-between
+      gap: 16px
+      align-items: center
+
+    &__icon
+      display: none
+      @include tablet
+        display: block
+
 
     input[type="text"],
     input[type="number"]
@@ -28,11 +71,32 @@
       -moz-appearance: textfield
 
     &__title
+      position: relative
       font-size: 20px
       text-transform: uppercase
-      margin-bottom: 32px
       @include tablet
         font-size: 18px
+        &::after
+          content: ""
+          position: absolute
+          display: none
+          width: 6px
+          height: 6px
+          top: -2px
+          right: -8px
+          background-color: currentColor
+          border-radius: 50%
+    &__back
+      display: none
+      width: 40px
+      height: 40px
+
+    &__body
+      display: flex
+      flex-direction: column
+      gap: 32px
+      @include tablet
+        display: none
 
     &__fieldset
       display: flex
@@ -74,8 +138,68 @@
         border: 1px solid $blue
         background-image: url("../img/icons/check.svg")
 
-
+    &__buttons
+      display: flex
+      flex-direction: column
+      gap: 8px
+      @include tablet
+        position: sticky
+        bottom: 0
+        background-color: $white
     &__reset
       width: 100%
+    &__submit
+      width: 100%
+      display: none
 
 
+
+  &__list
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))
+    grid-template-rows: min-content
+    grid-auto-rows: min-content
+    gap: 16px
+    @include tablet
+      gap: 8px
+    @include mobile
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+    @media (max-width: 400px)
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+
+  &__item
+    position: relative
+    background-color: $white
+    border-radius: 16px
+    padding: 16px
+    display: flex
+    flex-direction: column
+    @include mobile
+      padding: 12px
+    &-badge
+      position: absolute
+      top: 16px
+      left: 16px
+      @include mobile
+        top: 12px
+        left: 12px
+    &-title
+      font-size: 14px
+      margin: 20px 0 4px
+      @include tablet
+        font-size: 12px
+    &-desc
+      font-size: 14px
+      color: $dark-gray
+      @include tablet
+        font-size: 12px
+
+  .promo
+    grid-column: 1 / -1
+
+
+  .pagination
+    grid-column: 1 / -1
+    margin-top: 32px
+    @include tablet
+      margin-top: 24px

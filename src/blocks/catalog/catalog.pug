@@ -5,95 +5,185 @@ section.catalog
 
         // Табы фильтра
         .catalog__tabs.tabs__list
-            button.tabs__item.active(data-category="all") Все
-            button.tabs__item(data-category="1") Гематология
-            button.tabs__item(data-category="2") Биохимия
-            button.tabs__item(data-category="3") Анализ мочи
-            button.tabs__item(data-category="4") Системы забора крови
+            a.tabs__item.active(href="##") Все
+            a.tabs__item(href="##") Гематология
+            a.tabs__item(href="##") Биохимия
+            a.tabs__item(href="##") Анализ мочи
+            a.tabs__item(href="##") Системы забора крови
 
         .catalog__body
 
+            // Фильтр
             form.catalog__filter.filter
-                h3.filter__title Фильтр
+                .filter__heading
+                    h3.filter__title Фильтр
+                    img.filter__icon(src="./assets/img/icons/filter-solid.svg")
+                    img.filter__back(src="./assets/img/icons/arrow-filter-back.svg")
                 // Цена
-                fieldset.filter__fieldset
-                    legend.filter__fieldset-title Цена ₽
+                .filter__body
+                    fieldset.filter__fieldset
+                        legend.filter__fieldset-title Цена ₽
 
-                    .range.range--price
-                        .range__values
-                            input#price-min(type="text" data-min="1000")
-                            input#price-max(type="text" data-max="240000")
-                        .range__slider#range-price
+                        .range.range--price
+                            .range__values
+                                input#price-min(type="text" data-min="1000")
+                                input#price-max(type="text" data-max="240000")
+                            .range__slider#range-price
 
-                // Бренд
-                fieldset.filter__fieldset
-                    legend.filter__fieldset-title Бренд
+                    // Бренд
+                    fieldset.filter__fieldset
+                        legend.filter__fieldset-title Бренд
 
-                    label.filter__checkbox
-                        input(type="checkbox" value="Zybio" name="brand")
-                        | Zybio
+                        label.filter__checkbox
+                            input(type="checkbox" value="Zybio" name="brand")
+                            | Zybio
 
-                    label.filter__checkbox
-                        input(type="checkbox" value="Dymind" name="brand")
-                        | Dymind
+                        label.filter__checkbox
+                            input(type="checkbox" value="Dymind" name="brand")
+                            | Dymind
 
-                    label.filter__checkbox
-                        input(type="checkbox" value="Sysmex" name="brand")
-                        | Sysmex
+                        label.filter__checkbox
+                            input(type="checkbox" value="Sysmex" name="brand")
+                            | Sysmex
 
-                    label.filter__checkbox
-                        input(type="checkbox" value="Cepheid" name="brand")
-                        | Cepheid
+                        label.filter__checkbox
+                            input(type="checkbox" value="Cepheid" name="brand")
+                            | Cepheid
 
-                    label.filter__checkbox
-                        input(type="checkbox" value="Abbott" name="brand")
-                        | Abbott
+                        label.filter__checkbox
+                            input(type="checkbox" value="Abbott" name="brand")
+                            | Abbott
 
-                    label.filter__checkbox
-                        input(type="checkbox" value="BioRad" name="brand")
-                        | BioRad
-
-
-                // Страна-производитель
-                fieldset.filter__fieldset
-                    legend.filter__fieldset-title Страна-производитель
-
-                    label.filter__checkbox
-                        input(type="checkbox" value="Россия" name="country")
-                        | Россия
-
-                    label.filter__checkbox
-                        input(type="checkbox" value="Германия" name="country")
-                        | Германия
-
-                    label.filter__checkbox
-                        input(type="checkbox" value="США" name="country")
-                        | США
-
-                    label.filter__checkbox
-                        input(type="checkbox" value="Великобритания" name="country")
-                        | Великобритания
-
-                    label.filter__checkbox
-                        input(type="checkbox" value="Швеция" name="country")
-                        | Швеция
-
-                    label.filter__checkbox
-                        input(type="checkbox" value="Китай" name="country")
-                        | Китай
+                        label.filter__checkbox
+                            input(type="checkbox" value="BioRad" name="brand")
+                            | BioRad
 
 
-                // Тип управления
-                fieldset.filter__fieldset
-                    legend.filter__fieldset-title Тип управления
+                    // Страна-производитель
+                    fieldset.filter__fieldset
+                        legend.filter__fieldset-title Страна-производитель
 
-                    label.filter__checkbox
-                        input(type="checkbox" value="Автоматический" name="control")
-                        | Россия
+                        label.filter__checkbox
+                            input(type="checkbox" value="Россия" name="country")
+                            | Россия
 
-                    label.filter__checkbox
-                        input(type="checkbox" value="Полуавтоматический" name="control")
-                        | Германия
+                        label.filter__checkbox
+                            input(type="checkbox" value="Германия" name="country")
+                            | Германия
+
+                        label.filter__checkbox
+                            input(type="checkbox" value="США" name="country")
+                            | США
+
+                        label.filter__checkbox
+                            input(type="checkbox" value="Великобритания" name="country")
+                            | Великобритания
+
+                        label.filter__checkbox
+                            input(type="checkbox" value="Швеция" name="country")
+                            | Швеция
+
+                        label.filter__checkbox
+                            input(type="checkbox" value="Китай" name="country")
+                            | Китай
 
 
-                button.filter__reset.button.button-outline-dark(type="reset") Сбросить фильтры
+                    // Тип управления
+                    fieldset.filter__fieldset
+                        legend.filter__fieldset-title Тип управления
+
+                        label.filter__checkbox
+                            input(type="checkbox" value="Автоматический" name="control")
+                            | Россия
+
+                        label.filter__checkbox
+                            input(type="checkbox" value="Полуавтоматический" name="control")
+                            | Германия
+
+                    .filter__buttons
+                        button.filter__submit.button.button-blue(type="submit") Применить фильтры
+                        button.filter__reset.button.button-outline-dark(type="reset") Сбросить фильтры
+
+            // Сетка товаров
+            .catalog__list
+
+                a.catalog__item(href="##")
+                    span.badge-slide.catalog__item-badge NEW
+                    img.catalog__item-img(src="./assets/img/products/01.png")
+                    h3.catalog__item-title Zybio U1600
+                    p.catalog__item-desc Биохимический анализатор мочи
+
+                a.catalog__item(href="##")
+                    img.catalog__item-img(src="./assets/img/products/02.png")
+                    h3.catalog__item-title Zybio EXC200
+                    p.catalog__item-desc Биохимический анализатор
+
+                a.catalog__item(href="##")
+                    span.badge-slide.catalog__item-badge NEW
+                    img.catalog__item-img(src="./assets/img/products/03.png")
+                    h3.catalog__item-title Dymind DH76
+                    p.catalog__item-desc Анализатор 5-Diff автоматический гематологический
+
+                a.catalog__item(href="##")
+                    img.catalog__item-img(src="./assets/img/products/04.png")
+                    h3.catalog__item-title Zybio Z50
+                    p.catalog__item-desc Гематологический анализатор
+
+                a.catalog__item(href="##")
+                    img.catalog__item-img(src="./assets/img/products/02.png")
+                    h3.catalog__item-title Zybio EXC200
+                    p.catalog__item-desc Биохимический анализатор
+
+                a.catalog__item(href="##")
+                    span.badge-slide.catalog__item-badge NEW
+                    img.catalog__item-img(src="./assets/img/products/03.png")
+                    h3.catalog__item-title Dymind DH76
+                    p.catalog__item-desc Анализатор 5-Diff автоматический гематологический
+
+                include ../promo/promo
+
+                a.catalog__item(href="##")
+                    span.badge-slide.catalog__item-badge NEW
+                    img.catalog__item-img(src="./assets/img/products/01.png")
+                    h3.catalog__item-title Zybio U1600
+                    p.catalog__item-desc Биохимический анализатор мочи
+
+                a.catalog__item(href="##")
+                    img.catalog__item-img(src="./assets/img/products/02.png")
+                    h3.catalog__item-title Zybio EXC200
+                    p.catalog__item-desc Биохимический анализатор
+
+                a.catalog__item(href="##")
+                    span.badge-slide.catalog__item-badge NEW
+                    img.catalog__item-img(src="./assets/img/products/03.png")
+                    h3.catalog__item-title Dymind DH76
+                    p.catalog__item-desc Анализатор 5-Diff автоматический гематологический
+
+                a.catalog__item(href="##")
+                    img.catalog__item-img(src="./assets/img/products/04.png")
+                    h3.catalog__item-title Zybio Z50
+                    p.catalog__item-desc Гематологический анализатор
+
+                a.catalog__item(href="##")
+                    img.catalog__item-img(src="./assets/img/products/02.png")
+                    h3.catalog__item-title Zybio EXC200
+                    p.catalog__item-desc Биохимический анализатор
+
+                a.catalog__item(href="##")
+                    span.badge-slide.catalog__item-badge NEW
+                    img.catalog__item-img(src="./assets/img/products/03.png")
+                    h3.catalog__item-title Dymind DH76
+                    p.catalog__item-desc Анализатор 5-Diff автоматический гематологический
+
+
+                .pagination
+                    button.pagination__btn-more.button.button-outline-dark(type="button") Показать еще 10
+                    .pagination__list
+                        a.pagination__prev(href="")
+                        a.pagination__item.active(href="") 1
+                        a.pagination__item(href="") 2
+                        a.pagination__item(href="") 3
+                        a.pagination__item(href="") 4
+                        span.pagination__dots ...
+                        a.pagination__item(href="") 12
+                        a.pagination__next(href="")
