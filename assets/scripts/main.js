@@ -115,6 +115,19 @@ if (advantages) {
   });
 }
 "use strict";
+
+var catalog = document.querySelector(".catalog");
+if (catalog) {
+  var mobileWidthMediaQuery = window.matchMedia('(max-width: 1280px)');
+  var filter = catalog.querySelector(".filter");
+  var filterHeading = filter.querySelector(".filter__heading");
+  if (mobileWidthMediaQuery.matches) {
+    filterHeading.addEventListener("click", function () {
+      filterHeading.classList.toggle("active");
+      toggleBlockScrollBody();
+    });
+  }
+}
 "use strict";
 
 var rangeSliderInit = function rangeSliderInit(_ref) {
@@ -122,6 +135,7 @@ var rangeSliderInit = function rangeSliderInit(_ref) {
     inputMinID = _ref.inputMinID,
     inputMaxID = _ref.inputMaxID,
     step = _ref.step;
+  var resetButton = document.querySelector(".filter .filter__reset");
   var range = document.getElementById(rangeSliderID); // Ищем слайдер
   var inputMin = document.getElementById(inputMinID); // Ищем input с меньшим значнием
   var inputMax = document.getElementById(inputMaxID); // Ищем input с большим значнием
@@ -146,18 +160,27 @@ var rangeSliderInit = function rangeSliderInit(_ref) {
     step: step // шаг изменения значений
   });
 
+  // при изменений положения элементов управления слайдера изменяем соответствующие значения
   range.noUiSlider.on('update', function (values, handle) {
-    // при изменений положения элементов управления слайдера изменяем соответствующие значения
     inputs[handle].value = parseInt(values[handle]);
   });
+
+  // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
   inputMin.addEventListener('change', function () {
-    // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
     range.noUiSlider.set([this.value, null]);
   });
+
+  // при изменении большего значения в input - меняем положение соответствующего элемента управления
   inputMax.addEventListener('change', function () {
-    // при изменении большего значения в input - меняем положение соответствующего элемента управления
     range.noUiSlider.set([null, this.value]);
   });
+
+  // Обработчик кнопки "Сбросить"
+  if (resetButton) {
+    resetButton.addEventListener("click", function () {
+      range.noUiSlider.reset();
+    });
+  }
 };
 var settingsRangePrice = {
   rangeSliderID: "range-price",
