@@ -164,8 +164,9 @@
       gap: 8px
     @include mobile
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
-    @media (max-width: 400px)
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+    @media (max-width: 480px)
+      //grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+      grid-template-columns: repeat(2, 1fr)
 
   &__item
     position: relative
