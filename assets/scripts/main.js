@@ -56,7 +56,7 @@ function initializeSwiper(containerClass) {
 initializeSwiper("offers");
 initializeSwiper("directions");
 initializeSwiper("products");
-initializeSwiper("partners");
+//initializeSwiper("partners");
 "use strict";
 
 var images = document.querySelectorAll("img");
@@ -232,6 +232,27 @@ if (offers) {
       offersSlideContent.insertBefore(offerImg, offerDesc);
     });
   }
+}
+"use strict";
+
+var partners = document.querySelector(".partners");
+if (partners) {
+  var checkScreen = function checkScreen() {
+    var mediaQuery = window.matchMedia("(min-width: 1280px)").matches;
+    mediaQuery ? partnersSwiper.destroy(true, true) : partnersSwiper.init();
+  };
+  var swiper = partners.querySelector(".partners__slider");
+  var partnersSwiper = new Swiper(swiper, {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    watchOverflow: true,
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    initialSlide: 0
+  });
+  checkScreen();
 }
 "use strict";
 
