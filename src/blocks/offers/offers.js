@@ -9,7 +9,9 @@ if (offers) {
         const offersSlideContent = offersSlide.querySelector(".offers__item-content");
         const offerImg = offersSlide.querySelector(".offers__item-img");
         const offerDesc = offersSlide.querySelector(".offers__item-desc");
-        offersSlideContent.insertBefore(offerImg, offerDesc);
+        if (offersSlideContent && offerImg && offerDesc) {
+          offersSlideContent.insertBefore(offerImg, offerDesc);
+        }
       });
     }
 }

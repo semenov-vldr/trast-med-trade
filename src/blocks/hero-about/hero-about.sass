@@ -1,0 +1,37 @@
+.hero-about
+
+  &__title
+    font-size: 40px
+    text-align: center
+    text-wrap: balance
+    margin-bottom: 40px
+    @include tablet
+      font-size: 32px
+      margin-bottom: 20px
+
+  &__img
+    width: 100vw
+
+  &__advantages
+    display: grid
+    grid-template-columns: repeat(4, auto)
+    gap: 80px
+    margin-top: 120px
+    @include tablet
+      gap: 32px
+      margin-top: 64px
+    @include mobile
+      grid-template-columns: repeat(2, auto)
+      margin-top: 48px
+    &-item
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+      &-num
+        line-height: 1
+        @include fontSize(64, 100)
+      &-text
+        max-width: 165px
+        @include tablet
+          font-size: 14px
