@@ -229,7 +229,9 @@ if (offers) {
       var offersSlideContent = offersSlide.querySelector(".offers__item-content");
       var offerImg = offersSlide.querySelector(".offers__item-img");
       var offerDesc = offersSlide.querySelector(".offers__item-desc");
-      offersSlideContent.insertBefore(offerImg, offerDesc);
+      if (offersSlideContent && offerImg && offerDesc) {
+        offersSlideContent.insertBefore(offerImg, offerDesc);
+      }
     });
   }
 }
