@@ -3,7 +3,7 @@
 <html lang="ru-RU">
   <head>
     <meta charset="utf-8">
-    <title>Акции</title>
+    <title>Траст Мед Трейд - Страница товара</title>
     <meta name="viewport" content="width=device-width,initial-scale=1 shrink-to-fit=no">
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="48x48" href="./assets/favicon/favicon.ico">
@@ -39,6 +39,100 @@
       </div>
     </header>
     <main>
+      <div class="breadcrumbs">
+        <div class="container breadcrumbs__container"><a class="breadcrumbs__item" href="index.html">Главная</a><span class="breadcrumbs__item">Страница товара</span>
+        </div>
+      </div>
+      <section class="product-page">
+        <div class="product-page__container container">
+          <div class="product-page__grid">
+            <div class="product-page__slider-wrap">
+              <div class="swiper-thumbs">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="./assets/img/offers/01.png"></div>
+                  <div class="swiper-slide"><img src="./assets/img/offers/02.png"></div>
+                  <div class="swiper-slide"><img src="./assets/img/offers/03.png"></div>
+                </div>
+              </div>
+              <div class="swiper-main">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="./assets/img/offers/01.png"></div>
+                  <div class="swiper-slide"><img src="./assets/img/offers/02.png"></div>
+                  <div class="swiper-slide"><img src="./assets/img/offers/03.png"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+            <aside class="product-page__aside">
+              <h1>Dimynd</h1>
+              <p>Анализатор 5-DIFF класса с автоматической подачей образцов (60 пробирок)</p>
+              <button class="button button-blue" type="button">Узнать цену</button>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <!--Обратная связь-->
+      <section class="feedback">
+        <div class="feedback__container container">
+          <div class="feedback__content">
+            <h2 class="title-section">Подберем оптимальное оборудование, реагенты или расходные материалы</h2>
+            <p class="feedback__text">Задайте нам вопрос или прикрепите техническое задание</p><img class="feedback__img" src="./assets/img/feedback-img.png">
+          </div>
+          <form class="form" method="post">
+            <label class="form__field">Как к Вам обращаться?*
+              <input type="text" name="name" placeholder="Ваше имя" minlength="2" maxlength="20" required>
+            </label>
+            <label class="form__field">Телефон*
+              <input type="tel" name="tel" placeholder="Ваш телефон" inputmode="tel" required>
+            </label>
+            <label class="form__field">Почта*
+              <input type="email" name="email" placeholder="Ваша почта" required>
+            </label>
+            <label class="form__field">Комментарий
+              <textarea name="comment" rows="4" placeholder="Введите комментарий"></textarea>
+            </label>
+            <div class="form__upload-zone">
+              <label class="form__upload-file"><span class="form__upload-label">Прикрепите файл до 35 мб (doc, pdf, txt)</span>
+                <input class="form__upload-input" type="file" name="file" accept=".doc, .pdf, .text" hidden>
+              </label><span class="form__field-error">Неверный формат или размер файла</span>
+              <button class="button button-blue form__upload-reset" type="button">Удалить файл</button>
+            </div>
+            <button class="form__submit button button-blue" type="submit">Оставить заявку</button>
+            <p class="form__policy">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="">Политикой конфиденциальности</a></p>
+          </form>
+        </div>
+      </section>
+      <!--Наша продукция-->
+      <section class="products">
+        <div class="products__container container">
+          <h2 class="title-section">Наша продукция</h2>
+          <div class="products__tabs">
+            <div class="products__tabs-list tabs__list">
+              <button class="tabs__item products__tabs-item active" data-category="all">Все</button>
+              <button class="tabs__item products__tabs-item" data-category="1">Гематология</button>
+              <button class="tabs__item products__tabs-item" data-category="2">Биохимия</button>
+              <button class="tabs__item products__tabs-item" data-category="3">Анализ мочи</button>
+              <button class="tabs__item products__tabs-item" data-category="4">Системы забора крови</button>
+            </div>
+            <div class="swiper-navigation products__nav">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+          <div class="products__slider swiper">
+            <div class="swiper-wrapper"><a class="swiper-slide products__item width-slide" href="##" data-category="2"><span class="badge-slide products__item-badge">NEW</span><img class="products__item-img" src="./assets/img/products/01.png">
+                <h3 class="products__item-title">Zybio U1600</h3>
+                <p class="products__item-desc">Биохимический анализатор мочи</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="2"><img class="products__item-img" src="./assets/img/products/02.png">
+                <h3 class="products__item-title">Zybio EXC200</h3>
+                <p class="products__item-desc">Биохимический анализатор</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="1"><img class="products__item-img" src="./assets/img/products/03.png">
+                <h3 class="products__item-title">Dymind DH76</h3>
+                <p class="products__item-desc">Анализатор 5-Diff автоматический гематологический</p></a><a class="swiper-slide products__item width-slide" href="##" data-category="1"><img class="products__item-img" src="./assets/img/products/04.png">
+                <h3 class="products__item-title">Zybio Z50</h3>
+                <p class="products__item-desc">Гематологический анализатор</p></a></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
     </main>
     <!--Footer-->
     <footer class="footer">
