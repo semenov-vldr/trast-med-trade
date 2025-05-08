@@ -1,0 +1,11 @@
+extends ../layouts/error
+
+block variables
+  - let title = "Траст Мед Трейд - Ошибка 404"
+
+block content
+  section.error
+    .error__container.container
+      h1.error__title 404
+      p К сожалению, страница не найдена
+      a.button.button-blue(href="index.html") Перейти на главную

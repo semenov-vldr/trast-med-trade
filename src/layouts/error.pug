@@ -1,0 +1,15 @@
+include ../blocks/mixins
+
+block variables
+  - var activePage = activePage
+
+doctype html
+html(lang="ru-RU")
+    include head
+    body
+        include ../blocks/header/header
+        main
+            block content
+    script(src="./assets/scripts/libs.min.js")
+    script(src="./assets/scripts/main.js" type="module")
+    block script

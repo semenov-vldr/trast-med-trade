@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+block variables
+  - let title = "Траст Мед Трейд - Страница товара"
+
+block content
+    +breadcrumbs([{text: "Главная", url: "index.html"}, {text: "Страница товара"}])
+
+    include ../blocks/product-page/product-page
+    include ../blocks/feedback/feedback
+    include ../blocks/products/products

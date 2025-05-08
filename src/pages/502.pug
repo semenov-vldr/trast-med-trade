@@ -1,0 +1,11 @@
+extends ../layouts/error
+
+block variables
+  - let title = "Траст Мед Трейд - Ошибка 502"
+
+block content
+    section.error
+        .error__container.container
+            h1.error__title 502
+            p К сожалению, что-то пошло не так
+            a.button.button-blue(href="index.html") Перейти на главную
