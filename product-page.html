@@ -64,10 +64,111 @@
               </div>
             </div>
             <aside class="product-page__aside">
-              <h1>Dimynd</h1>
-              <p>Анализатор 5-DIFF класса с автоматической подачей образцов (60 пробирок)</p>
-              <button class="button button-blue" type="button">Узнать цену</button>
+              <div class="product-page__aside-body">
+                <div class="product-page__aside-heading">
+                  <h1 class="product-page__title">Dimynd</h1>
+                  <p class="product-page__title-desc">Анализатор 5-DIFF класса с автоматической подачей образцов (60 пробирок)</p>
+                </div>
+                <div class="product-page__price"><span class="product-page__price-value">Цена по запросу</span>
+                  <button class="button button-blue product-page__price-button" type="button" onclick="window.modal.showModal()">Узнать цену</button>
+                </div>
+                <ul class="product-page__info">
+                  <li class="product-page__info-item product-page__info-item--country">Страна-производитель: Китай</li>
+                  <li class="product-page__info-item product-page__info-item--certification">Товар сертифицирован</li>
+                  <li class="product-page__info-item product-page__info-item--documentation">Есть необходимая документация</li>
+                </ul>
+                <ul class="product-page__params">
+                  <li class="product-page__params-item"><span>Производительность</span><span>до 90 тестов в час</span></li>
+                  <li class="product-page__params-item"><span>Кол-во определяемых параметров</span><span>29</span></li>
+                  <li class="product-page__params-item"><span>Аспирируемый объем</span><span>20 мкл</span></li>
+                  <li class="product-page__params-item"><span>Архив данных</span><span>до 100 000 записей</span></li>
+                  <li class="product-page__params-item"><span>Габариты</span><span>650 мм × 550 мм × 610 мм</span></li>
+                  <li class="product-page__params-item"><span>Вес</span><span>57.5 кг</span></li>
+                </ul>
+              </div><a class="product-page__aside-manufacturer" href="##">
+                <div class="product-page__aside-manufacturer-img"><img src="./assets/img/dymind.png"></div><span class="product-page__aside-manufacturer-text">Все товары производителя</span><span class="arrow-right-light"></span></a>
             </aside>
+            <div class="product-page__details">
+              <!-- Табы-->
+              <div class="tabs__list product-page__details-tabs">
+                <button class="tabs__item product-page__details-tabs-item active" data-details="desc">Описание</button>
+                <button class="tabs__item product-page__details-tabs-item" data-details="doc">Документация</button>
+                <button class="tabs__item product-page__details-tabs-item" data-details="info">Информация для заказа</button>
+              </div>
+              <!-- Описание-->
+              <ul class="product-page__details-desc product-page__details-item" data-details="desc">
+                <li class="product-page__details-desc-item">
+                  <div class="product-page__details-desc-item-title">Типы образцов</div>
+                  <div class="product-page__details-desc-item-text">
+                    <p>Цельная венозная кровь</p>
+                    <p>Цельная капиллярная кровь</p>
+                    <p>Предразведенная кровь</p>
+                  </div>
+                </li>
+                <li class="product-page__details-desc-item">
+                  <div class="product-page__details-desc-item-title">Методы анализа</div>
+                  <div class="product-page__details-desc-item-text">
+                    <p>Импедансный метод для определения WBC, RBC и PLT</p>
+                    <p>Импедансный метод для определения WBC, RBC и PLT</p>
+                    <p>Проточная цитометрия (FCM) с трехугловым лазерным рассеянием для дифференциации WBC</p>
+                  </div>
+                </li>
+                <li class="product-page__details-desc-item">
+                  <div class="product-page__details-desc-item-title">Производительность</div>
+                  <div class="product-page__details-desc-item-text">
+                    <p>90 анализов в час (CBC)</p>
+                    <p>80 анализов в час (CBC + DIFF)</p>
+                  </div>
+                </li>
+                <li class="product-page__details-desc-item">
+                  <div class="product-page__details-desc-item-title">Измеряемые показатели</div>
+                  <div class="product-page__details-desc-item-text">
+                    <p>25 основных параметров: WBC, Neu#, Lym#, Mon#, Eos#, Bas#, Neu%, Lym%, Mon%, Eos%, Bas%, RBC, HGB, HCT, MCV, MCH, MCHC, RDW-SD, RDW-CV, PLT, MPV, PDW, PCT, P-LCR, P-LCC</p>
+                    <p>4 исследовательских параметра: ALY#, ALY%, LIC#, LIC%</p>
+                  </div>
+                </li>
+              </ul>
+              <!-- Документация-->
+              <div class="product-page__details-doc product-page__details-item hidden" data-details="doc">
+                <details class="product-page__details-doc-item">
+                  <summary class="product-page__details-doc-item-title">Название группы документов</summary>
+                  <div class="product-page__details-doc-files">
+                    <div class="product-page__details-doc-file">
+                      <div class="product-page__details-doc-file-title">Название документа.pdf</div><a href="##">Открыть</a><a href="##" download>Скачать</a>
+                    </div>
+                    <div class="product-page__details-doc-file">
+                      <div class="product-page__details-doc-file-title">Название документа.pdf</div><a href="##">Открыть</a><a href="##" download>Скачать</a>
+                    </div>
+                  </div>
+                </details>
+                <details class="product-page__details-doc-item">
+                  <summary class="product-page__details-doc-item-title">Название группы документов</summary>
+                  <ul class="product-page__details-doc-files">
+                    <li class="product-page__details-doc-file">
+                      <div class="product-page__details-doc-file-title">Название документа.pdf</div><a href="##">Открыть</a><a href="##" download>Скачать</a>
+                    </li>
+                    <li class="product-page__details-doc-file">
+                      <div class="product-page__details-doc-file-title">Название документа.pdf</div><a href="##">Открыть</a><a href="##" download>Скачать</a>
+                    </li>
+                  </ul>
+                </details>
+              </div>
+              <!-- Информация для заказа-->
+              <div class="product-page__details-info product-page__details-item hidden" data-details="info">
+                <div class="product-page__details-info-item">
+                  <div class="product-page__details-info-item-title">Информация для заказа</div>
+                  <div class="product-page__details-info-item-text">
+                    <p>Регистрационное удостоверение: РЗН 2023/20386</p>
+                    <p>Сертификат/декларация соответствия: Не подлежит обязательной сертификации</p>
+                    <p>Класс опасности: Не опасный</p>
+                    <p>Вес (нетто): 76,5 кг</p>
+                    <p>Объем (нетто): 0,52245 куб. м</p>
+                    <p>Транспортировка: +15°C до +30°C</p>
+                    <p>Условия хранения: +15°C до +30°C</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

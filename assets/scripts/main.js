@@ -1,5 +1,13 @@
 "use strict";
 
+function addWindowsClass() {
+  if (navigator.userAgent.indexOf('Windows') > -1) {
+    document.documentElement.classList.add('windows');
+  }
+}
+document.addEventListener('DOMContentLoaded', addWindowsClass);
+"use strict";
+
 var html = document.querySelector('html');
 var classBlockScroll = "js-no-scroll";
 function blockScrollBody() {
@@ -258,16 +266,40 @@ if (partners) {
 }
 "use strict";
 
-// Слайдер с миниатюрами
+// Слайдер на странице товара и табы
 var productPage = document.querySelector(".product-page");
 if (productPage) {
   createProductProfileSlider(productPage);
+
+  // Работа табов
+  var detailsTabs = productPage.querySelectorAll(".product-page__details-tabs .product-page__details-tabs-item");
+  var detailsItems = productPage.querySelectorAll(".product-page__details-item");
+  detailsTabs.forEach(function (detailsTab) {
+    var dataTabDetails = detailsTab.dataset.details;
+    detailsTab.addEventListener("click", function () {
+      detailsItems.forEach(function (detailsItem) {
+        var dataItemDetails = detailsItem.dataset.details;
+        detailsItem.classList.toggle("hidden", dataTabDetails !== dataItemDetails);
+      });
+    });
+  });
+
+  // Раскрытие только одного "details" в блоке "Документация"
+  var docDetails = productPage.querySelectorAll(".product-page__details-doc .product-page__details-doc-item");
+  docDetails.forEach(function (detailsItem) {
+    detailsItem.addEventListener("click", function () {
+      var _this = this;
+      docDetails.forEach(function (d) {
+        return d !== _this ? d.removeAttribute("open") : "null";
+      });
+    });
+  });
 }
 function createProductProfileSlider(productPage) {
   var swiperMain = productPage.querySelector('.swiper-main');
   var swiperThumbs = productPage.querySelector('.swiper-thumbs');
   var swiper__thumbs = new Swiper(swiperThumbs, {
-    spaceBetween: 28,
+    spaceBetween: 8,
     slidesPerView: "auto",
     freeMode: true,
     watchSlidesProgress: true,
