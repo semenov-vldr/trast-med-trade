@@ -24,7 +24,126 @@ section.product-page
 
 
             aside.product-page__aside
-                h1 Dimynd
-                p Анализатор 5-DIFF класса с автоматической подачей образцов (60 пробирок)
-                button.button.button-blue(type="button") Узнать цену
+                .product-page__aside-body
+                    .product-page__aside-heading
+                        h1.product-page__title Dimynd
+                        p.product-page__title-desc Анализатор 5-DIFF класса с автоматической подачей образцов (60 пробирок)
+                    .product-page__price
+                        span.product-page__price-value Цена по запросу
+                        button.button.button-blue.product-page__price-button(type="button" onclick="window.modal.showModal()") Узнать цену
+
+                    ul.product-page__info
+                        li.product-page__info-item.product-page__info-item--country Страна-производитель: Китай
+                        li.product-page__info-item.product-page__info-item--certification Товар сертифицирован
+                        li.product-page__info-item.product-page__info-item--documentation Есть необходимая документация
+
+                    ul.product-page__params
+                        li.product-page__params-item
+                            span Производительность
+                            span до 90 тестов в час
+                        li.product-page__params-item
+                            span Кол-во определяемых параметров
+                            span 29
+                        li.product-page__params-item
+                            span Аспирируемый объем
+                            span 20 мкл
+                        li.product-page__params-item
+                            span Архив данных
+                            span до 100 000 записей
+                        li.product-page__params-item
+                            span Габариты
+                            span 650 мм × 550 мм × 610 мм
+                        li.product-page__params-item
+                            span Вес
+                            span 57.5 кг
+
+                a.product-page__aside-manufacturer(href="##")
+                    .product-page__aside-manufacturer-img
+                        img(src="./assets/img/dymind.png")
+                    span.product-page__aside-manufacturer-text Все товары производителя
+                    span.arrow-right-light
+
+
+            .product-page__details
+
+                // Табы
+                .tabs__list.product-page__details-tabs
+                    button.tabs__item.product-page__details-tabs-item.active(data-details="desc") Описание
+                    button.tabs__item.product-page__details-tabs-item(data-details="doc") Документация
+                    button.tabs__item.product-page__details-tabs-item(data-details="info") Информация для заказа
+
+                // Описание
+                ul.product-page__details-desc.product-page__details-item(data-details="desc")
+
+                    li.product-page__details-desc-item
+                        .product-page__details-desc-item-title Типы образцов
+                        .product-page__details-desc-item-text
+                            p Цельная венозная кровь
+                            p Цельная капиллярная кровь
+                            p Предразведенная кровь
+
+                    li.product-page__details-desc-item
+                        .product-page__details-desc-item-title Методы анализа
+                        .product-page__details-desc-item-text
+                            p Импедансный метод для определения WBC, RBC и PLT
+                            p Импедансный метод для определения WBC, RBC и PLT
+                            p Проточная цитометрия (FCM) с трехугловым лазерным рассеянием для дифференциации WBC
+
+                    li.product-page__details-desc-item
+                        .product-page__details-desc-item-title Производительность
+                        .product-page__details-desc-item-text
+                            p 90 анализов в час (CBC)
+                            p 80 анализов в час (CBC + DIFF)
+
+                    li.product-page__details-desc-item
+                        .product-page__details-desc-item-title Измеряемые показатели
+                        .product-page__details-desc-item-text
+                            p 25 основных параметров: WBC, Neu#, Lym#, Mon#, Eos#, Bas#, Neu%, Lym%, Mon%, Eos%, Bas%, RBC, HGB, HCT, MCV, MCH, MCHC, RDW-SD, RDW-CV, PLT, MPV, PDW, PCT, P-LCR, P-LCC
+                            p 4 исследовательских параметра: ALY#, ALY%, LIC#, LIC%
+
+
+
+
+                // Документация
+                .product-page__details-doc.product-page__details-item.hidden(data-details="doc")
+                    details.product-page__details-doc-item
+                        summary.product-page__details-doc-item-title Название группы документов
+                        .product-page__details-doc-files
+                            .product-page__details-doc-file
+                                .product-page__details-doc-file-title Название документа.pdf
+                                a(href="##") Открыть
+                                a(href="##" download) Скачать
+
+                            .product-page__details-doc-file
+                                .product-page__details-doc-file-title Название документа.pdf
+                                a(href="##") Открыть
+                                a(href="##" download) Скачать
+
+                    details.product-page__details-doc-item
+                        summary.product-page__details-doc-item-title Название группы документов
+                        ul.product-page__details-doc-files
+                            li.product-page__details-doc-file
+                                .product-page__details-doc-file-title Название документа.pdf
+                                a(href="##") Открыть
+                                a(href="##" download) Скачать
+
+                            li.product-page__details-doc-file
+                                .product-page__details-doc-file-title Название документа.pdf
+                                a(href="##") Открыть
+                                a(href="##" download) Скачать
+
+                // Информация для заказа
+                .product-page__details-info.product-page__details-item.hidden(data-details="info")
+                    .product-page__details-info-item
+                        .product-page__details-info-item-title Информация для заказа
+                        .product-page__details-info-item-text
+                            p Регистрационное удостоверение: РЗН 2023/20386
+                            p Сертификат/декларация соответствия: Не подлежит обязательной сертификации
+                            p Класс опасности: Не опасный
+                            p Вес (нетто): 76,5 кг
+                            p Объем (нетто): 0,52245 куб. м
+                            p Транспортировка: +15°C до +30°C
+                            p Условия хранения: +15°C до +30°C
+
+
 

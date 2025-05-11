@@ -156,9 +156,10 @@ section
   display: flex
   gap: 8px
   align-items: center
-  overflow: auto
+  overflow-x: auto
   margin: 0 -16px
   padding: 0 16px
+  -webkit-overflow-scrolling: touch
 
   .tabs__item
     background-color: $white
@@ -172,6 +173,22 @@ section
     &.active
       background-color: $blue
       color: $white
+
+
+.arrow-right-light
+  display: block
+  margin-left: auto
+  //background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23EEF5F9'/%3E%3Cpath d='M26.5303 21.5303C26.8232 21.2374 26.8232 20.7626 26.5303 20.4697L21.7574 15.6967C21.4645 15.4038 20.9896 15.4038 20.6967 15.6967C20.4038 15.9896 20.4038 16.4645 20.6967 16.7574L24.9393 21L20.6967 25.2426C20.4038 25.5355 20.4038 26.0104 20.6967 26.3033C20.9896 26.5962 21.4645 26.5962 21.7574 26.3033L26.5303 21.5303ZM14 21.75H26V20.25H14V21.75Z' fill='%231E4062'/%3E%3C/svg%3E")
+  background-image: Url("../img/icons/arrow-filter-back.svg")
+  background-repeat: no-repeat
+  background-size: contain
+  background-position: center
+  transform: rotate(180deg)
+  width: 40px
+  height: 40px
+  flex: 0 0 40px
+  background-color: $bg
+  border-radius: 50%
 
 
 
@@ -289,7 +306,7 @@ section
   @include tablet
     display: block
   .swiper-pagination-bullet
-    background-color: $gray
+    background-color: $dark-gray
   .swiper-pagination-bullet-active
     background-color: $blue
 

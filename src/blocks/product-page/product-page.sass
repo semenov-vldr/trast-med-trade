@@ -4,32 +4,297 @@
     display: grid
     grid-template-columns: 3fr 2fr
     gap: 32px
+    @include tablet
+      grid-template-columns: 1fr
+      gap: 12px
 
   &__slider-wrap
     display: grid
-    grid-template-columns: 80px auto
+    grid-template-columns: 80px 1fr
     gap: 12px
     overflow: hidden
     border-radius: 8px
+    height: 650px
+    @include tablet
+      grid-template-columns: 1fr
+      height: auto
 
   .swiper-main
     background-color: $white
     border-radius: 8px
     padding: 32px
-    height: 650px
+    overflow: hidden
+    @include tablet
+      padding: 16px 16px 40px
     @include mobile
       height: 300px
+
+    .swiper-wrapper
+      height: 100%
     .swiper-slide
       display: flex
-      //align-items: center
-      //justify-content: center
+      align-items: center
+      justify-content: center
+      img
+        width: auto
+        max-height: 80%
+        height: 100%
 
+
+  .swiper-thumbs
+    .swiper-slide
+      background-color: $white
+      padding: 8px
+      border-radius: 8px
+      width: 80px
+      height: 80px
+      border: 1px solid transparent
+      img
+        object-fit: contain
+        height: 100%
+        width: 100%
+    .swiper-slide-thumb-active
+      border-color: $dark-blue
+    @include tablet
+      display: none
 
   &__aside
-    background-color: $white
-    border-radius: 8px
-    padding: 24px
+    display: flex
+    flex-direction: column
+    gap: 12px
     height: fit-content
     @media (min-width: $width-tablet)
       position: sticky
       top: 120px
+      gap: 24px
+    &-body
+      background-color: $white
+      border-radius: 8px
+      padding: 24px
+      display: flex
+      flex-direction: column
+      gap: 32px
+      @include tablet
+        padding: 12px
+
+    &-heading
+      display: flex
+      flex-direction: column
+      gap: 8px
+
+    &-manufacturer
+      border-radius: 8px
+      padding: 4px 16px 4px 4px
+      display: flex
+      align-items: center
+      gap: 16px
+      background-color: $white
+      height: 80px
+      @include mobile
+        font-size: 12px
+        gap: 8px
+
+      &-img
+        background-color: $blue
+        width: 108px
+        height: 100%
+        flex: 0 0 108px
+        border-radius: 8px
+        padding: 14px
+        display: flex
+        align-items: center
+        justify-content: center
+
+  &__info
+    display: flex
+    flex-direction: column
+    gap: 12px
+    &-item
+      position: relative
+      display: flex
+      align-items: center
+      gap: 8px
+      font-size: 14px
+      @include tablet
+        font-size: 12px
+      &::before
+        content: ""
+        display: inline-block
+        background-position: center
+        background-size: contain
+        background-repeat: no-repeat
+        width: 20px
+        height: 20px
+        flex: 0 0 20px
+    &-item--country::before
+      background-image: url("../img/icons/country.svg")
+    &-item--certification::before
+      background-image: url("../img/icons/thump-up.svg")
+    &-item--documentation::before
+      background-image: url("../img/icons/doc.svg")
+
+
+
+
+
+  &__params
+    border-top: 1px solid $gray
+    padding-top: 32px
+    display: flex
+    flex-direction: column
+    gap: 16px
+    &-item
+      display: flex
+      gap: 8px
+      justify-content: space-between
+      @include tablet
+        font-size: 12px
+
+
+  &__title
+    font-size: 20px
+    font-weight: 500
+    @include tablet
+      font-size: 18px
+  &__title-desc
+    color: $dark-gray
+    text-wrap: balance
+    @include tablet
+      font-size: 14px
+
+  &__price
+    display: flex
+    flex-direction: column
+    gap: 32px
+
+    &-value
+      font-weight: 500
+      font-size: 24px
+      @include tablet
+        font-size: 20px
+    &-button
+      width: 100%
+
+
+  &__details
+    display: flex
+    flex-direction: column
+    gap: 16px
+    overflow: hidden
+
+    // Описание
+    &-desc
+      display: flex
+      flex-direction: column
+      gap: 8px
+
+      &-item
+        background-color: $white
+        border-radius: 8px
+        padding: 24px
+
+        &-title
+          font-weight: 500
+          margin-bottom: 12px
+
+        &-text
+          display: flex
+          flex-direction: column
+          gap: 8px
+          color: $dark-gray
+          font-size: 14px
+          @include tablet
+            font-size: 12px
+
+    // Документация
+    &-doc
+      display: flex
+      flex-direction: column
+      gap: 8px
+
+      &-item
+        background-color: $white
+        border-radius: 12px
+        padding: 24px
+        &[open] .product-page__details-doc-item-title
+          margin-bottom: 18px
+        &[open] .product-page__details-doc-item-title::after
+          background-image: url("../img/icons/minus.svg")
+
+        &-title
+          position: relative
+          font-size: 20px
+          font-weight: 500
+          display: flex
+          align-items: center
+          justify-content: space-between
+          gap: 32px
+          cursor: pointer
+          &:hover
+            text-decoration: underline
+          @include mobile
+            gap: 16px
+          &::after
+            content: ""
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23EEF5F9'/%3E%3Crect x='9.80664' y='19.293' width='19.7183' height='1.5' rx='0.75' fill='%231E4062'/%3E%3Crect x='19' y='29.8994' width='19.7183' height='1.5' rx='0.75' transform='rotate(-90 19 29.8994)' fill='%231E4062'/%3E%3C/svg%3E")
+            width: 40px
+            height: 40px
+            flex: 0 0 40px
+
+      &-files
+        display: flex
+        flex-direction: column
+        gap: 8px
+
+      &-file
+        background-color: $bg
+        border-radius: 8px
+        padding: 12px 40px 12px 12px
+        display: flex
+        gap: 16px 64px
+        justify-content: space-between
+        align-items: center
+        flex-wrap: wrap
+        @include mobile
+          padding: 12px
+
+        &-title
+          position: relative
+          font-weight: 500
+          margin-right: auto
+          display: flex
+          align-items: center
+          gap: 8px
+          &::before
+            content: ""
+            display: inline-block
+            //background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36' fill='none'%3E%3Cpath d='M29.25 14.3271V33.75H6.75V2.25H17.3665L29.25 14.3271Z' stroke='%231E4062' stroke-width='1.5'/%3E%3Cpath d='M18 2.25V15.75H29.25' stroke='%231E4062' stroke-width='1.5'/%3E%3Cpath d='M9.7 26V18.8H12.61C12.68 18.8 12.7667 18.8033 12.87 18.81C12.9733 18.8133 13.0717 18.8233 13.165 18.84C13.565 18.9033 13.8983 19.04 14.165 19.25C14.435 19.46 14.6367 19.725 14.77 20.045C14.9033 20.365 14.97 20.7183 14.97 21.105C14.97 21.495 14.9033 21.85 14.77 22.17C14.6367 22.49 14.435 22.755 14.165 22.965C13.8983 23.175 13.565 23.3117 13.165 23.375C13.0717 23.3883 12.9717 23.3983 12.865 23.405C12.7617 23.4117 12.6767 23.415 12.61 23.415H10.745V26H9.7ZM10.745 22.425H12.57C12.6367 22.425 12.71 22.4217 12.79 22.415C12.8733 22.4083 12.9517 22.3967 13.025 22.38C13.2383 22.33 13.41 22.2383 13.54 22.105C13.67 21.9683 13.7633 21.8117 13.82 21.635C13.8767 21.4583 13.905 21.2817 13.905 21.105C13.905 20.9283 13.8767 20.7533 13.82 20.58C13.7633 20.4033 13.67 20.2483 13.54 20.115C13.41 19.9783 13.2383 19.885 13.025 19.835C12.9517 19.815 12.8733 19.8017 12.79 19.795C12.71 19.7883 12.6367 19.785 12.57 19.785H10.745V22.425ZM15.9695 26V18.8H18.2245C18.2912 18.8 18.4145 18.8017 18.5945 18.805C18.7779 18.8083 18.9529 18.8217 19.1195 18.845C19.6829 18.915 20.1562 19.1167 20.5395 19.45C20.9262 19.7833 21.2179 20.2067 21.4145 20.72C21.6112 21.23 21.7095 21.79 21.7095 22.4C21.7095 23.0133 21.6112 23.5767 21.4145 24.09C21.2179 24.6 20.9262 25.0217 20.5395 25.355C20.1562 25.685 19.6829 25.885 19.1195 25.955C18.9529 25.9783 18.7779 25.9917 18.5945 25.995C18.4145 25.9983 18.2912 26 18.2245 26H15.9695ZM17.0395 25.005H18.2245C18.3379 25.005 18.4729 25.0017 18.6295 24.995C18.7862 24.9883 18.9245 24.975 19.0445 24.955C19.4112 24.885 19.7079 24.7267 19.9345 24.48C20.1645 24.23 20.3329 23.9233 20.4395 23.56C20.5462 23.1967 20.5995 22.81 20.5995 22.4C20.5995 21.9767 20.5445 21.585 20.4345 21.225C20.3245 20.8617 20.1545 20.5583 19.9245 20.315C19.6979 20.0683 19.4045 19.9117 19.0445 19.845C18.9245 19.8217 18.7845 19.8083 18.6245 19.805C18.4679 19.7983 18.3345 19.795 18.2245 19.795H17.0395V25.005ZM22.8738 26V18.8H27.1388V19.845H23.9188V21.875H26.5388V22.925H23.9188V26H22.8738Z' fill='%23122940'/%3E%3C/svg%3E")
+            background-image: url("../img/icons/pdf.svg")
+            width: 36px
+            height: 36px
+        a
+          text-decoration: underline
+
+    &-info
+      display: flex
+      flex-direction: column
+      gap: 8px
+
+      &-item
+        background-color: $white
+        border-radius: 8px
+        padding: 24px
+
+        &-title
+          font-weight: 500
+          margin-bottom: 12px
+
+        &-text
+          display: flex
+          flex-direction: column
+          gap: 8px
+          color: $dark-gray
+          font-size: 14px
+          @include tablet
+            font-size: 12px
+
