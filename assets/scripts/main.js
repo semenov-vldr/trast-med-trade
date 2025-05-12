@@ -339,15 +339,17 @@ if (products) {
 "use strict";
 
 // Раскрытие только одного "details" в блоке "Документация"
-var docDetails = productPage.querySelectorAll(".product-page__details-doc .product-page__details-doc-item");
-docDetails.forEach(function (detailsItem) {
-  detailsItem.addEventListener("click", function () {
-    var _this = this;
-    docDetails.forEach(function (d) {
-      return d !== _this ? d.removeAttribute("open") : "null";
+var docDetails = document.querySelectorAll(".details-doc");
+if (docDetails) {
+  docDetails.forEach(function (detailsItem) {
+    detailsItem.addEventListener("click", function () {
+      var _this = this;
+      docDetails.forEach(function (d) {
+        return d !== _this ? d.removeAttribute("open") : "null";
+      });
     });
   });
-});
+}
 "use strict";
 
 var forms = document.querySelectorAll("form.form");
