@@ -1,0 +1,61 @@
+.details-doc
+  background-color: $white
+  border-radius: 12px
+  padding: 24px
+  &[open] .details-doc__title
+    margin-bottom: 18px
+  &[open] .details-doc__title::after
+    background-image: url("../img/icons/minus.svg")
+
+  &__title
+    position: relative
+    font-size: 20px
+    font-weight: 500
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 32px
+    cursor: pointer
+    &:hover
+      text-decoration: underline
+    @include mobile
+      gap: 16px
+    &::after
+      content: ""
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23EEF5F9'/%3E%3Crect x='9.80664' y='19.293' width='19.7183' height='1.5' rx='0.75' fill='%231E4062'/%3E%3Crect x='19' y='29.8994' width='19.7183' height='1.5' rx='0.75' transform='rotate(-90 19 29.8994)' fill='%231E4062'/%3E%3C/svg%3E")
+      width: 40px
+      height: 40px
+      flex: 0 0 40px
+
+  &__files
+    display: flex
+    flex-direction: column
+    gap: 8px
+
+  &__file
+    background-color: $bg
+    border-radius: 8px
+    padding: 12px 40px 12px 12px
+    display: flex
+    gap: 16px 64px
+    justify-content: space-between
+    align-items: center
+    flex-wrap: wrap
+    @include mobile
+      padding: 12px
+
+    &-title
+      position: relative
+      font-weight: 500
+      margin-right: auto
+      display: flex
+      align-items: center
+      gap: 8px
+      &::before
+        content: ""
+        display: inline-block
+        background-image: url("../img/icons/pdf.svg")
+        width: 36px
+        height: 36px
+    a
+      text-decoration: underline

@@ -106,31 +106,9 @@ section.product-page
 
                 // Документация
                 .product-page__details-doc.product-page__details-item.hidden(data-details="doc")
-                    details.product-page__details-doc-item
-                        summary.product-page__details-doc-item-title Название группы документов
-                        .product-page__details-doc-files
-                            .product-page__details-doc-file
-                                .product-page__details-doc-file-title Название документа.pdf
-                                a(href="##") Открыть
-                                a(href="##" download) Скачать
+                    include ../../components/details-doc/details-doc
+                    include ../../components/details-doc/details-doc
 
-                            .product-page__details-doc-file
-                                .product-page__details-doc-file-title Название документа.pdf
-                                a(href="##") Открыть
-                                a(href="##" download) Скачать
-
-                    details.product-page__details-doc-item
-                        summary.product-page__details-doc-item-title Название группы документов
-                        ul.product-page__details-doc-files
-                            li.product-page__details-doc-file
-                                .product-page__details-doc-file-title Название документа.pdf
-                                a(href="##") Открыть
-                                a(href="##" download) Скачать
-
-                            li.product-page__details-doc-file
-                                .product-page__details-doc-file-title Название документа.pdf
-                                a(href="##") Открыть
-                                a(href="##" download) Скачать
 
                 // Информация для заказа
                 .product-page__details-info.product-page__details-item.hidden(data-details="info")
