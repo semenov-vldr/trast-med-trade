@@ -64,7 +64,7 @@ function initializeSwiper(containerClass) {
 initializeSwiper("offers");
 initializeSwiper("directions");
 initializeSwiper("products");
-//initializeSwiper("partners");
+initializeSwiper("certificates");
 "use strict";
 
 var images = document.querySelectorAll("img");
@@ -199,6 +199,7 @@ var settingsRangePrice = {
 window.addEventListener('DOMContentLoaded', function () {
   return rangeSliderInit(settingsRangePrice);
 });
+"use strict";
 "use strict";
 
 var header = document.querySelector("header.header");
