@@ -6,6 +6,8 @@
     margin-bottom: 18px
   &[open] .details-doc__title::after
     background-image: url("../img/icons/minus.svg")
+  @include tablet
+    padding: 20px
 
   &__title
     position: relative
@@ -18,6 +20,8 @@
     cursor: pointer
     &:hover
       text-decoration: underline
+    @include tablet
+      font-size: 18px
     @include mobile
       gap: 16px
     &::after

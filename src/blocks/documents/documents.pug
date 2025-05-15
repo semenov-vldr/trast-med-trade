@@ -1,0 +1,25 @@
+- let count = 0;
+
+section.documents
+    .documents__container.container
+        h1.documents__title Документы
+
+        // Табы
+        .tabs__list.documents__tabs
+            button.tabs__item.documents__tabs-item.active(data-docs="") Название бренда
+            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
+            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
+            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
+            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
+            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
+
+        .documents__list
+
+            while count < 10
+                include ../../components/details-doc/details-doc
+                - count += 1;
+
+
+
+
+

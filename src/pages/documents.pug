@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+block variables
+  - let title = "Траст Мед Трейд - Документы"
+
+block content
+    +breadcrumbs([{text: "Главная", url: "index.html"}, {text: "Документы"}])
+
+    include ../blocks/documents/documents.pug
+    include ../blocks/certificates/certificates
+
