@@ -75,6 +75,198 @@ if (images) {
 }
 "use strict";
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Функция для загрузки страницы целиком
+  function loadPageContent(url, container) {
+    var updateHistory = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    // Показываем индикатор загрузки
+    var loader = document.createElement('div');
+    loader.className = 'catalog__loader';
+    loader.innerHTML = '<div class="spinner"></div><p>Загрузка элементов...</p>';
+    container.innerHTML = '';
+    container.appendChild(loader);
+
+    // Добавляем параметр, чтобы избежать кеширования
+    var nocacheUrl = url + (url.includes('?') ? '&' : '?') + 'nocache=' + new Date().getTime();
+
+    // Загружаем данные через AJAX
+    fetch(nocacheUrl).then(function (response) {
+      return response.text();
+    }).then(function (html) {
+      // Создаем временный контейнер и добавляем в него полученный HTML
+      var tempContainer = document.createElement('div');
+      tempContainer.innerHTML = html;
+
+      // Находим контейнер с элементами в полученном HTML
+      var newContent = tempContainer.querySelector('#catalog-items-container');
+      if (newContent) {
+        // Заменяем содержимое текущего контейнера
+        container.innerHTML = newContent.innerHTML;
+
+        // Обновляем URL в истории браузера
+        if (updateHistory) {
+          history.pushState({}, '', url);
+        }
+
+        // Переинициализируем обработчики событий для пагинации
+        initPaginationHandlers();
+      } else {
+        console.error('Не найден контейнер с элементами в ответе');
+        window.location.reload();
+      }
+    })["catch"](function (error) {
+      console.error('Ошибка загрузки:', error);
+      // В случае ошибки перезагружаем страницу
+      window.location.reload();
+    });
+  }
+
+  // Функция для загрузки дополнительных элементов ("Показать еще")
+  function loadMoreItems(url, container) {
+    // Показываем индикатор загрузки
+    var paginationContainer = container.querySelector('.pagination');
+    var loader = document.createElement('div');
+    loader.className = 'catalog__loader';
+    loader.innerHTML = '<div class="spinner"></div><p>Загрузка элементов...</p>';
+    if (paginationContainer) {
+      container.insertBefore(loader, paginationContainer);
+    } else {
+      container.appendChild(loader);
+    }
+
+    // Добавляем параметр, чтобы избежать кеширования
+    var nocacheUrl = url + (url.includes('?') ? '&' : '?') + 'nocache=' + new Date().getTime();
+
+    // Загружаем данные через AJAX
+    fetch(nocacheUrl).then(function (response) {
+      return response.text();
+    }).then(function (html) {
+      // Удаляем индикатор загрузки
+      loader.remove();
+
+      // Добавляем HTML ответа в скрытый временный контейнер
+      var tempContainer = document.createElement('div');
+      tempContainer.style.display = 'none';
+      document.body.appendChild(tempContainer);
+      tempContainer.innerHTML = html;
+
+      // Получаем все новые элементы
+      var newItems = tempContainer.querySelectorAll('.catalog__item, .promo');
+
+      // Вставляем новые элементы перед пагинацией
+      if (newItems.length > 0) {
+        newItems.forEach(function (item) {
+          if (paginationContainer) {
+            container.insertBefore(item, paginationContainer);
+          } else {
+            container.appendChild(item);
+          }
+        });
+        console.log('Добавлено новых элементов:', newItems.length);
+
+        // Обновляем пагинацию
+        var newPagination = tempContainer.querySelector('.pagination');
+        if (newPagination && paginationContainer) {
+          container.replaceChild(newPagination, paginationContainer);
+        }
+
+        // Переинициализируем обработчики
+        initPaginationHandlers();
+      } else {
+        console.error('Не найдены новые элементы для добавления');
+
+        // Если нет новых элементов, но мы знаем, что они должны быть,
+        // перезагружаем страницу для сброса кеша
+        if (url.includes('PAGEN_') && !url.includes('nocache=')) {
+          window.location.reload();
+        }
+      }
+
+      // Удаляем временный контейнер
+      document.body.removeChild(tempContainer);
+    })["catch"](function (error) {
+      // Удаляем индикатор загрузки в случае ошибки
+      loader.remove();
+      console.error('Ошибка загрузки дополнительных элементов:', error);
+
+      // Показываем сообщение об ошибке
+      var errorMsg = document.createElement('div');
+      errorMsg.className = 'catalog__error';
+      errorMsg.textContent = 'Произошла ошибка при загрузке данных. Попробуйте обновить страницу.';
+      if (paginationContainer) {
+        container.insertBefore(errorMsg, paginationContainer);
+      } else {
+        container.appendChild(errorMsg);
+      }
+
+      // Удаляем сообщение через 5 секунд
+      setTimeout(function () {
+        errorMsg.remove();
+      }, 5000);
+    });
+  }
+
+  // Функция для инициализации обработчиков событий пагинации
+  function initPaginationHandlers() {
+    // Находим контейнер с элементами
+    var container = document.getElementById('catalog-items-container');
+    if (!container) return;
+
+    // Обработчик для кнопки "Показать еще"
+    var moreButtons = document.querySelectorAll('.js-show-more');
+    moreButtons.forEach(function (button) {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Получаем URL для загрузки следующей страницы
+        var url = this.getAttribute('data-url');
+        if (!url) {
+          console.error('Не указан URL для загрузки');
+          return;
+        }
+
+        // Загружаем дополнительные элементы
+        loadMoreItems(url, container);
+      });
+    });
+
+    // Обработчик для ссылок пагинации
+    var paginationLinks = document.querySelectorAll('.pagination-link');
+    paginationLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Получаем URL для загрузки страницы
+        var url = this.getAttribute('href');
+        if (!url || url === 'javascript:void(0);') return;
+
+        // Загружаем новую страницу через AJAX
+        loadPageContent(url, container);
+
+        // Прокручиваем страницу вверх к началу каталога
+        var catalogSection = document.querySelector('.catalog');
+        if (catalogSection) {
+          catalogSection.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+
+  // Обработчик событий для навигации по истории браузера (кнопки вперед/назад)
+  window.addEventListener('popstate', function () {
+    var container = document.getElementById('catalog-items-container');
+    if (container) {
+      loadPageContent(window.location.href, container, false);
+    }
+  });
+
+  // Инициализируем обработчики пагинации при загрузке страницы
+  initPaginationHandlers();
+});
+"use strict";
+
 // Добавить/убрать активность табов
 var blocksTabs = document.querySelectorAll(".tabs__list");
 if (blocksTabs) {
@@ -200,6 +392,38 @@ window.addEventListener('DOMContentLoaded', function () {
   return rangeSliderInit(settingsRangePrice);
 });
 "use strict";
+
+var pageDocs = document.querySelector(".documents");
+if (pageDocs) {
+  var docsTabs = pageDocs.querySelectorAll(".documents__tabs-item");
+  var docsList = pageDocs.querySelectorAll(".documents__list");
+
+  // Создание оберток для колонок документов
+  docsList.forEach(function (docsItem) {
+    var groupDocs = docsItem.querySelectorAll(".details-doc");
+    var docWrap1 = document.createElement("div");
+    docWrap1.classList.add("documents__group-wrap-1");
+    var docWrap2 = document.createElement("div");
+    docWrap2.classList.add("documents__group-wrap-2");
+    groupDocs.forEach(function (groupDoc, index) {
+      index % 2 === 0 ? docWrap1.appendChild(groupDoc) : docWrap2.appendChild(groupDoc);
+    });
+    docsItem.appendChild(docWrap1);
+    docsItem.appendChild(docWrap2);
+  });
+
+  // Работа табов для документов
+  docsTabs.forEach(function (docsTab) {
+    docsTab.addEventListener("click", function () {
+      var dataTabDoc = docsTab.dataset.docs;
+      docsList.forEach(function (docsItem) {
+        var dataDocs = docsItem.dataset.docs;
+        var isActiveDocs = dataTabDoc !== dataDocs;
+        docsItem.classList.toggle("hidden", isActiveDocs);
+      });
+    });
+  });
+}
 "use strict";
 
 var header = document.querySelector("header.header");
@@ -336,6 +560,23 @@ if (products) {
       swiperInstance === null || swiperInstance === void 0 || swiperInstance.update();
     });
   });
+}
+"use strict";
+
+var promotion = document.querySelector(".promotion");
+if (promotion) {
+  var widthTablet = window.matchMedia("(max-width: 1280px)");
+  var promotionItems = promotion.querySelectorAll(".promotion__item");
+  if (widthTablet.matches && promotionItems) {
+    promotionItems.forEach(function (promotionItem) {
+      var promotionItemContent = promotionItem.querySelector(".promotion__item-content");
+      var promotionImg = promotionItem.querySelector(".promotion__item-img");
+      var promotionDesc = promotionItem.querySelector(".promotion__item-desc");
+      if (promotionItemContent && promotionImg && promotionDesc) {
+        promotionItemContent.insertBefore(promotionImg, promotionDesc);
+      }
+    });
+  }
 }
 "use strict";
 

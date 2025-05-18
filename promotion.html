@@ -3,7 +3,7 @@
 <html lang="ru-RU">
   <head>
     <meta charset="utf-8">
-    <title>Акции</title>
+    <title>Траст Мед Трейд - Акции</title>
     <meta name="viewport" content="width=device-width,initial-scale=1 shrink-to-fit=no">
     <!--favicon-->
     <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/favicon/favicon.ico">
@@ -28,7 +28,7 @@
               <h3 class="header__nav-prod-link-title">Расходные материалы</h3></a><a class="header__nav-prod-link" href="##">
               <div class="header__nav-prod-link-img"><img src="./assets/img/directions/05.svg"></div>
               <h3 class="header__nav-prod-link-title">Системы забора крови</h3></a></nav>
-          <nav class="header__nav"><a class="header__nav-link" href="about.html">О компании</a><a class="header__nav-link" href="documents.html">Документы</a><a class="header__nav-link" href="##">Акции</a></nav>
+          <nav class="header__nav"><a class="header__nav-link" href="about.html">О компании</a><a class="header__nav-link" href="documents.html">Документы</a><a class="header__nav-link" href="promotion.html">Акции</a></nav>
           <div class="header__contacts"><a class="header__contacts-item header__contacts-phone" href="tel:+78007000266">8 (800) 700 02 66</a><a class="header__contacts-item header__contacts-email" href="mailto:sale1@t-mt.ru">sale1@t-mt.ru</a>
             <p class="header__contacts-time">Пн-Пт 9:00 -17:00</p>
           </div>
@@ -37,11 +37,72 @@
       </div>
     </header>
     <main>
+      <div class="breadcrumbs">
+        <div class="container breadcrumbs__container"><a class="breadcrumbs__item" href="index.html">Главная</a><span class="breadcrumbs__item">Акции</span>
+        </div>
+      </div>
+      <section class="promotion">
+        <div class="promotion__container container">
+          <h1 class="title-section-h1">Акции</h1>
+          <div class="promotion__list"><a class="promotion__item" href="product-page.html">
+              <div class="promotion__item-content"><span class="badge-slide">Exclusive</span>
+                <h3 class="promotion__item-title">Биохимический анализатор EXC 200 по цене 150 000 рублей</h3>
+                <p class="promotion__item-desc">Акция действует при покупке тест-полосок Combi-Screen 11SYS на сумму 115 000 руб. с НДС (7050 исследований)</p>
+              </div><img class="promotion__item-img" src="./assets/img/offers/01.png"></a><a class="promotion__item" href="product-page.html">
+              <div class="promotion__item-content"><span class="badge-slide">Exclusive</span>
+                <h3 class="promotion__item-title">Биохимический анализатор EXC 200 по цене 150 000 рублей</h3>
+                <p class="promotion__item-desc">Акция действует при покупке тест-полосок Combi-Screen 11SYS на сумму 115 000 руб. с НДС (7050 исследований)</p>
+              </div><img class="promotion__item-img" src="./assets/img/offers/01.png"></a><a class="promotion__item" href="product-page.html">
+              <div class="promotion__item-content"><span class="badge-slide">Exclusive</span>
+                <h3 class="promotion__item-title">Биохимический анализатор EXC 200 по цене 150 000 рублей</h3>
+                <p class="promotion__item-desc">Акция действует при покупке тест-полосок Combi-Screen 11SYS на сумму 115 000 руб. с НДС (7050 исследований)</p>
+              </div><img class="promotion__item-img" src="./assets/img/offers/01.png"></a><a class="promotion__item" href="product-page.html">
+              <div class="promotion__item-content"><span class="badge-slide">Exclusive</span>
+                <h3 class="promotion__item-title">Биохимический анализатор EXC 200 по цене 150 000 рублей</h3>
+                <p class="promotion__item-desc">Акция действует при покупке тест-полосок Combi-Screen 11SYS на сумму 115 000 руб. с НДС (7050 исследований)</p>
+              </div><img class="promotion__item-img" src="./assets/img/offers/01.png"></a></div>
+          <div class="pagination">
+            <button class="pagination__btn-more button button-outline-dark" type="button">Показать еще 10</button>
+            <div class="pagination__list"><a class="pagination__prev" href=""></a><a class="pagination__item active" href="">1</a><a class="pagination__item" href="">2</a><a class="pagination__item" href="">3</a><a class="pagination__item" href="">4</a><span class="pagination__dots">...</span><a class="pagination__item" href="">12</a><a class="pagination__next" href=""></a></div>
+          </div>
+        </div>
+      </section>
+      <!--Обратная связь-->
+      <section class="feedback">
+        <div class="feedback__container container">
+          <div class="feedback__content">
+            <h2 class="title-section">Подберем оптимальное оборудование, реагенты или расходные материалы</h2>
+            <p class="feedback__text">Задайте нам вопрос или прикрепите техническое задание</p><img class="feedback__img" src="./assets/img/feedback-img.png">
+          </div>
+          <form class="form" method="post">
+            <label class="form__field">Как к Вам обращаться?*
+              <input type="text" name="name" placeholder="Ваше имя" minlength="2" maxlength="20" required>
+            </label>
+            <label class="form__field">Телефон*
+              <input type="tel" name="tel" placeholder="Ваш телефон" inputmode="tel" required>
+            </label>
+            <label class="form__field">Почта*
+              <input type="email" name="email" placeholder="Ваша почта" required>
+            </label>
+            <label class="form__field">Комментарий
+              <textarea name="comment" rows="4" placeholder="Введите комментарий"></textarea>
+            </label>
+            <div class="form__upload-zone">
+              <label class="form__upload-file"><span class="form__upload-label">Прикрепите файл до 35 мб (doc, pdf, txt)</span>
+                <input class="form__upload-input" type="file" name="file" accept=".doc, .pdf, .text" hidden>
+              </label><span class="form__field-error">Неверный формат или размер файла</span>
+              <button class="button button-blue form__upload-reset" type="button">Удалить файл</button>
+            </div>
+            <button class="form__submit button button-blue" type="submit">Оставить заявку</button>
+            <p class="form__policy">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="">Политикой конфиденциальности</a></p>
+          </form>
+        </div>
+      </section>
     </main>
     <!--Footer-->
     <footer class="footer">
       <div class="footer__container container"><a class="footer__logo" href="index.html"><img src="./assets/img/logo-light.svg"></a>
-        <nav class="footer__nav"><a class="footer__nav-link" href="##" target="_blank">Продукция</a><a class="footer__nav-link" href="about.html" target="_blank">О компании</a><a class="footer__nav-link" href="documents.html" target="_blank">Документы</a><a class="footer__nav-link" href="stocks.html" target="_blank">Акции</a></nav>
+        <nav class="footer__nav"><a class="footer__nav-link" href="##" target="_blank">Продукция</a><a class="footer__nav-link" href="about.html" target="_blank">О компании</a><a class="footer__nav-link" href="documents.html" target="_blank">Документы</a><a class="footer__nav-link" href="promotion.html" target="_blank">Акции</a></nav>
         <div class="footer__bottom">
           <div class="footer__contacts footer__contacts--1"><span>г. Ставрополь, ул.Горная, д. 47А</span><span>ПН-ПТ 9:00-17:00</span></div>
           <button class="button button-outline footer__button" type="button" onclick="window.modal.showModal()">Оставить заявку</button>
