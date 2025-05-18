@@ -1,23 +1,32 @@
-- let count = 0;
+- let count1 = 0;
+- let count2 = 0;
+- let count3 = 0;
 
 section.documents
     .documents__container.container
-        h1.documents__title Документы
+        h1.title-section-h1 Документы
 
         // Табы
-        .tabs__list.documents__tabs
-            button.tabs__item.documents__tabs-item.active(data-docs="") Название бренда
-            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
-            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
-            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
-            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
-            button.tabs__item.documents__tabs-item(data-docs="") Название бренда
+        .documents__tabs.tabs__list
+            button.tabs__item.documents__tabs-item.active(data-docs="1") Название бренда
+            button.tabs__item.documents__tabs-item(data-docs="2") Название бренда
+            button.tabs__item.documents__tabs-item(data-docs="3") Название бренда
 
-        .documents__list
-
-            while count < 10
+        .documents__list(data-docs="1")
+            while count1 < 10
                 include ../../components/details-doc/details-doc
-                - count += 1;
+                - count1 += 1;
+
+        .documents__list.hidden(data-docs="2")
+            while count2 < 5
+                include ../../components/details-doc/details-doc
+                - count2 += 1;
+
+
+        .documents__list.hidden(data-docs="3")
+            while count3 < 3
+                include ../../components/details-doc/details-doc
+                - count3 += 1;
 
 
 

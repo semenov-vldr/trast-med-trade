@@ -2,6 +2,7 @@
   background-color: $white
   border-radius: 12px
   padding: 24px
+  height: fit-content
   &[open] .details-doc__title
     margin-bottom: 18px
   &[open] .details-doc__title::after
@@ -61,5 +62,7 @@
         background-image: url("../img/icons/pdf.svg")
         width: 36px
         height: 36px
+      @include tablet
+        width: 100%
     a
       text-decoration: underline

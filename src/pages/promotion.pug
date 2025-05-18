@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+block variables
+  - let title = "Траст Мед Трейд - Акции"
+
+block content
+    +breadcrumbs([{text: "Главная", url: "index.html"}, {text: "Акции"}])
+
+    include ../blocks/promotion/promotion
+    include ../blocks/feedback/feedback
+
