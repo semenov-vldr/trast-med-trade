@@ -1,0 +1,12 @@
+extends ../layouts/main
+
+block variables
+  - let title = "Траст Мед Трейд - Политика конфиденциальности"
+
+block content
+    +breadcrumbs([{text: "Главная", url: "index.html"}, {text: "Политика конфиденциальности"}])
+
+    include ../blocks/privacy/privacy
+
+
+

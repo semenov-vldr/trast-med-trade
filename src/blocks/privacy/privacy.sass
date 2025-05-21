@@ -1,0 +1,64 @@
+.privacy
+  counter-reset: article-list
+  &__container
+    display: flex
+    flex-direction: column
+    gap: 24px
+    @include tablet
+      gap: 12px
+
+  &__body
+    display: flex
+    flex-direction: column
+    gap: 64px
+    background-color: $white
+    padding: 32px
+    border-radius: 20px
+    @include tablet
+      padding: 24px
+      gap: 48px
+
+  &__article
+    line-height: 1.5
+    counter-increment: article-list
+
+
+    &-title
+      font-size: 20px
+      font-weight: 500
+      margin-bottom: 20px
+      @include tablet
+        font-size: 18px
+
+    & > ol
+      list-style: none
+      counter-reset: item-level-1
+      & > li
+        position: relative
+        counter-increment: item-level-1
+        padding-left: 40px
+        &::before
+          content: counter(article-list) "." counter(item-level-1) "."
+          position: absolute
+          left: 0
+
+      & > li > ol
+        counter-reset: item-level-2
+
+      & > li > ol > li
+        position: relative
+        counter-increment: item-level-2
+        padding-left: 50px
+        &::before
+          content: counter(article-list) "." counter(item-level-1) "." counter(item-level-2) "."
+          position: absolute
+          left: 0
+    ol,
+    ol > li
+      display: flex
+      flex-direction: column
+      gap: 20px
+
+    ul li
+      list-style-type: disc
+      margin-left: 24px
