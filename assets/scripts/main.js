@@ -336,6 +336,7 @@ var rangeSliderInit = function rangeSliderInit(_ref) {
     inputMaxID = _ref.inputMaxID,
     step = _ref.step;
   var resetButton = document.querySelector(".filter .filter__reset");
+  var submitButton = document.querySelector(".filter .filter__submit");
   var range = document.getElementById(rangeSliderID); // Ищем слайдер
   var inputMin = document.getElementById(inputMinID); // Ищем input с меньшим значнием
   var inputMax = document.getElementById(inputMaxID); // Ищем input с большим значнием
@@ -376,11 +377,14 @@ var rangeSliderInit = function rangeSliderInit(_ref) {
   });
 
   // Обработчик кнопки "Сбросить"
-  if (resetButton) {
-    resetButton.addEventListener("click", function () {
-      range.noUiSlider.reset();
-    });
-  }
+  resetButton.addEventListener("click", function () {
+    range.noUiSlider.reset();
+  });
+
+  // Показать кнопку "применить" при измении цены
+  range.noUiSlider.on('slide', function () {
+    submitButton.classList.add("active");
+  });
 };
 var settingsRangePrice = {
   rangeSliderID: "range-price",
