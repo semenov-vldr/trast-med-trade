@@ -1,0 +1,13 @@
+section.feedback-small
+    img.feedback-small__bg(src="./assets/img/feedback-img.png")
+    .feedback-small__container.container
+        .feedback-small__header
+            .feedback-small__title Форма ответственного за сайт
+            .feedback-small__subtitle Напишите нам, и мы ответим вам в течение суток
+        form.feedback-small__form
+            label Как к Вам обращаться?*
+                input(type="text" placeholder="Ваше имя" required)
+            label Телефон*
+                input(type="tel" placeholder="+7 (000) 000 00 00" required)
+            button.button.button-blue(type="submit") Заказать обратный звонок
+        p.feedback-small__agreement Нажимая на кнопку, вы даете согласие на обработку персональных данных

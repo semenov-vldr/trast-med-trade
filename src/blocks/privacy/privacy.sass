@@ -10,37 +10,34 @@
   &__body
     display: flex
     flex-direction: column
-    gap: 64px
+    line-height: 1.5
     background-color: $white
     padding: 32px
     border-radius: 20px
     @include tablet
       padding: 24px
-      gap: 48px
 
-  &__article
-    line-height: 1.5
-    counter-increment: article-list
-
-
-    &-title
+    h3
       font-size: 20px
       font-weight: 500
       margin-bottom: 20px
+      counter-increment: article-list
       @include tablet
         font-size: 18px
 
     & > ol
       list-style: none
       counter-reset: item-level-1
+      @include tablet
+        font-size: 14px
       & > li
         position: relative
         counter-increment: item-level-1
-        padding-left: 40px
+        text-indent: 40px
         &::before
           content: counter(article-list) "." counter(item-level-1) "."
           position: absolute
-          left: 0
+          left: -35px
 
       & > li > ol
         counter-reset: item-level-2
@@ -48,11 +45,11 @@
       & > li > ol > li
         position: relative
         counter-increment: item-level-2
-        padding-left: 50px
+        text-indent: 45px
         &::before
           content: counter(article-list) "." counter(item-level-1) "." counter(item-level-2) "."
           position: absolute
-          left: 0
+          left: -45px
     ol,
     ol > li
       display: flex
@@ -62,3 +59,4 @@
     ul li
       list-style-type: disc
       margin-left: 24px
+      text-indent: 0

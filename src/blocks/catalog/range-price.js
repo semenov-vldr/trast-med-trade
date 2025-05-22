@@ -1,5 +1,6 @@
 const rangeSliderInit = ({ rangeSliderID, inputMinID, inputMaxID, step }) => {
   const resetButton = document.querySelector(".filter .filter__reset");
+  const submitButton = document.querySelector(".filter .filter__submit");
 
   const range = document.getElementById(rangeSliderID); // Ищем слайдер
   const inputMin = document.getElementById(inputMinID); // Ищем input с меньшим значнием
@@ -12,14 +13,14 @@ const rangeSliderInit = ({ rangeSliderID, inputMinID, inputMaxID, step }) => {
   const minValue= +inputMin.dataset.min;
   const maxValue = +inputMax.dataset.max;
 
-  noUiSlider.create(range, { // инициализируем слайдер
-      start: [minValue, maxValue], // устанавливаем начальные значения
-      connect: true, // указываем что нужно показывать выбранный диапазон
-      range: { // устанавливаем минимальное и максимальное значения
+  noUiSlider.create(range, {        // инициализируем слайдер
+      start: [minValue, maxValue],  // устанавливаем начальные значения
+      connect: true,                // указываем что нужно показывать выбранный диапазон
+      range: {                      // устанавливаем минимальное и максимальное значения
         'min': minValue,
         'max': maxValue
       },
-      step: step, // шаг изменения значений
+      step: step,                   // шаг изменения значений
     }
   );
 
@@ -39,11 +40,15 @@ const rangeSliderInit = ({ rangeSliderID, inputMinID, inputMaxID, step }) => {
   });
 
   // Обработчик кнопки "Сбросить"
-  if (resetButton) {
-    resetButton.addEventListener("click", () => {
-      range.noUiSlider.reset();
-    });
-  }
+  resetButton.addEventListener("click", () => {
+    range.noUiSlider.reset();
+  });
+
+
+  // Показать кнопку "применить" при измении цены
+  range.noUiSlider.on('slide', function () {
+    submitButton.classList.add("active");
+  });
 
 };
 

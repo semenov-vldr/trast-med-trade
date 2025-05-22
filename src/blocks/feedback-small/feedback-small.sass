@@ -1,0 +1,80 @@
+.feedback-small
+  position: relative
+  overflow: hidden
+  color: $white
+  padding: 40px 0
+  @include tablet
+    padding: 32px 0
+
+  &__bg
+    position: absolute
+    inset: 0
+    object-fit: cover
+    width: 100%
+    height: 100%
+    filter: blur(4px) brightness(40%)
+
+  &__container
+    position: relative
+    z-index: 2
+    display: flex
+    flex-direction: column
+    gap: 32px
+    align-items: center
+    justify-content: center
+    @include tablet
+      gap: 16px
+
+  &__header
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 16px
+    @include tablet
+      gap: 8px
+
+  &__title
+    font-size: 24px
+    @include tablet
+      font-size: 20px
+
+  &__subtitle
+    @include tablet
+      font-size: 14px
+
+  &__form
+    display: flex
+    align-items: flex-end
+    max-width: 920px
+    width: 100%
+    gap: 8px
+    @include tablet
+      flex-direction: column
+      gap: 20px
+
+    label
+      display: flex
+      flex-direction: column
+      gap: 4px
+      font-size: 14px
+      color: $white
+      width: 100%
+      max-width: 340px
+      @include tablet
+        max-width: 100%
+
+    input
+      background-color: $white
+      color: $dark-gray
+      font-size: 14px
+      padding: 12px 16px
+      border-radius: 8px
+      width: 100%
+
+    button
+      @include tablet
+        width: 100%
+
+  &__agreement
+    font-size: 12px
